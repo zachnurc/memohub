@@ -5,6 +5,11 @@
   background-color: #eaeaea;
 }
 
+.wrapper {
+  margin: auto;
+  width: 100%;
+}
+
 h1 {
   margin: 0;
 }
@@ -14,9 +19,13 @@ h1 {
   height: 80px;
 }
 
-.header-video {
+.header {
   background-color: #191919;
-  height: 50vh;
+  height: 100vh;
+}
+
+.header-video {
+  height: 40vh;
 }
 
 .page-title {
@@ -24,7 +33,8 @@ h1 {
 }
 
 .intro {
-  background-color: #191919;
+  margin: auto;
+  width: 90%;
   color: #afafaf;
   height: 50vh;
 }
@@ -34,10 +44,11 @@ h1 {
 }
 
 .products {
-  height: 100vh;
+  height: 200vh;
 }
 
 .product {
+  display: flex;
   height: 50vh;
 }
 
@@ -47,22 +58,21 @@ h1 {
 }
 
 .product-desc {
-  margin-right: auto;
-  display: inline;
+  align-items: center;
 }
 
 .product-left {
+  flex-shrink: 0;
   padding: 20px;
-  float: left;
   height: 300px;
-  width: 300px
+  width: 300px;
 }
 
 .product-right {
+  flex-shrink: 0;
   padding: 20px;
-  float: right;
   height: 300px;
-  width: 300px
+  width: 300px;
 }
 
 .contact {
