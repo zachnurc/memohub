@@ -1,6 +1,12 @@
 .App {
+  font-family: Helvetica, Arial, sans-serif;
   text-align: center;
   line-height: 2.0;
+  background-color: #eaeaea;
+}
+
+h1 {
+  margin: 0;
 }
 
 .App-logo {
@@ -9,12 +15,17 @@
 }
 
 .header-video {
-  background-color: #222;
+  background-color: #191919;
   height: 50vh;
-  color: white;
+}
+
+.page-title {
+  height: 20vh;
 }
 
 .intro {
+  background-color: #191919;
+  color: #afafaf;
   height: 50vh;
 }
 
@@ -24,22 +35,34 @@
 
 .products {
   height: 100vh;
-  margin: 20px 0;
 }
 
 .product {
-  padding: 20px;
   height: 50vh;
 }
 
+.product-title {
+  color: #00ccff;
+  margin: 0;
+}
+
+.product-desc {
+  margin-right: auto;
+  display: inline;
+}
+
 .product-left {
-  padding-left: 20px;
+  padding: 20px;
   float: left;
+  height: 300px;
+  width: 300px
 }
 
 .product-right {
   padding: 20px;
   float: right;
+  height: 300px;
+  width: 300px
 }
 
 .contact {
