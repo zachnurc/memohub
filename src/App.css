@@ -5,6 +5,11 @@
   background-color: #eaeaea;
 }
 
+body {
+  overflow: hidden;
+  height: 100%;
+}
+
 .wrapper {
   margin: auto;
   width: 100%;
@@ -23,6 +28,7 @@ ul {
 ul li {
   display: block;
   position: relative;
+  color: white;
 }
 
 ul li a {
@@ -35,20 +41,24 @@ ul li a {
   text-decoration: none;
 }
 
-ul li a.active span {
-  background: none;
-  border: 1px solid #000;
-  left: 6px;
-  top: 6px;
+ul li a span {
+  color: white;
   width: 10px;
   height: 10px;
+  background: none;
+  border-radius: 50%;
+  border: 1px solid white;
+  display: block;
+}
+
+ul li a:hover {
+  text-decoration: none;
 }
 
 #navbar {
-  position: absolute;
-  right: 20px;
-  color: black;
-  margin-top: -100px;
+  position: fixed;
+  left: 95vw;
+  top: 45vh;
 }
 
 .App-logo {
