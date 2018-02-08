@@ -21,17 +21,15 @@ class App extends Component {
 }
 
 
-  handleScroll(keycode){
+  handleKeyPress(keycode){
     var activeNav = [
       ReactDOM.findDOMNode(this.refs.home),
-      ReactDOM.findDOMNode(this.refs.PanicButton),
-      ReactDOM.findDOMNode(this.refs.IoTSensor),
-      ReactDOM.findDOMNode(this.refs.MemoApp),
-      ReactDOM.findDOMNode(this.refs.MemoHub),
+      ReactDOM.findDOMNode(this.refs.products1),
+      ReactDOM.findDOMNode(this.refs.products2),
       ReactDOM.findDOMNode(this.refs.contact)]
 
     if(keycode == 40){
-      if(this.state.navCounter < 6){
+      if(this.state.navCounter < 3){
         this.state.navCounter++;
       }
     }
@@ -44,14 +42,21 @@ class App extends Component {
     activeNav[this.state.navCounter].focus();
   }
 
+  handleScroll(){
+
+  }
+
   componentDidMount() {
     //   document.addEventListener('scroll', this.handleScroll);
     window.addEventListener("keydown", (e) => {
       // space, page up, page down and arrow keys:
       if([32, 33, 34, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
         e.preventDefault();
-        this.handleScroll(e.keyCode);
+        this.handleKeyPress(e.keyCode);
       }
+    }, false);
+    window.addEventListener("scroll", (e) => {
+      this.handleScroll(e.keyCode);
     }, false);
   }
 
@@ -69,7 +74,7 @@ class App extends Component {
             </div>
           </header>
           <div className="products">
-            <div id="PanicButton" className="product">
+            <div id="products1" className="product">
               <div className="product-left">
                 <img className="product-image" src={WearableImage} alt="placeholder"/>
               </div>
@@ -80,9 +85,20 @@ class App extends Component {
                 </p>
               </div>
             </div>
-            <div id="IoTSensor" className="product">
+            <div className="product">
+              <div className="product-left">
+                <img className="product-image" src={WearableImage} alt="placeholder"/>
+              </div>
               <div className="product-desc">
                 <h3 className="product-title">IoT Sensor</h3>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum et condimentum est. Sed sit amet convallis metus. Nam vel cursus justo. Curabitur dictum sollicitudin nulla non rhoncus. Nulla finibus hendrerit tellus vitae consequat. Suspendisse imperdiet magna enim. Cras eget mi metus. Ut facilisis vestibulum sem eu iaculis. Donec nec lorem velit. Aliquam magna sapien, rutrum et risus vitae, aliquam venenatis ex. Ut sit amet blandit urna. Fusce sagittis tellus eu ipsum volutpat pretium vulputate non metus.
+                </p>
+              </div>
+            </div>
+            <div id="products2" className="product">
+              <div className="product-desc">
+                <h3 className="product-title">Memo App</h3>
                 <p>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum et condimentum est. Sed sit amet convallis metus. Nam vel cursus justo. Curabitur dictum sollicitudin nulla non rhoncus. Nulla finibus hendrerit tellus vitae consequat. Suspendisse imperdiet magna enim. Cras eget mi metus. Ut facilisis vestibulum sem eu iaculis. Donec nec lorem velit. Aliquam magna sapien, rutrum et risus vitae, aliquam venenatis ex. Ut sit amet blandit urna. Fusce sagittis tellus eu ipsum volutpat pretium vulputate non metus.
                 </p>
@@ -91,18 +107,7 @@ class App extends Component {
                 <img className="product-image" src={WearableImage} alt="placeholder"/>
               </div>
             </div>
-            <div id="MemoApp" className="product">
-              <div className="product-left">
-                <img className="product-image" src={WearableImage} alt="placeholder"/>
-              </div>
-              <div className="product-desc">
-                <h3 className="product-title">Memo App</h3>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum et condimentum est. Sed sit amet convallis metus. Nam vel cursus justo. Curabitur dictum sollicitudin nulla non rhoncus. Nulla finibus hendrerit tellus vitae consequat. Suspendisse imperdiet magna enim. Cras eget mi metus. Ut facilisis vestibulum sem eu iaculis. Donec nec lorem velit. Aliquam magna sapien, rutrum et risus vitae, aliquam venenatis ex. Ut sit amet blandit urna. Fusce sagittis tellus eu ipsum volutpat pretium vulputate non metus.
-                </p>
-              </div>
-            </div>
-            <div id="MemoHub" className="product">
+            <div className="product">
               <div className="product-desc">
                 <h3 className="product-title">Memo Hub</h3>
                 <p>
@@ -124,10 +129,8 @@ class App extends Component {
             <ul>
               <li>
                 <a ref="home" href="#home"><span></span></a>
-                <a ref="PanicButton" href="#PanicButton"><span></span></a>
-                <a ref="IoTSensor" href="#IoTSensor"><span></span></a>
-                <a ref="MemoApp" href="#MemoApp"><span></span></a>
-                <a ref="MemoHub" href="#MemoHub"><span></span></a>
+                <a ref="products1" href="#products1"><span></span></a>
+                <a ref="products2" href="#products2"><span></span></a>
                 <a ref="contact" href="#contact"><span></span></a>
               </li>
             </ul>

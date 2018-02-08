@@ -96,7 +96,7 @@ ul li a:hover {
 
 .product {
   display: flex;
-  height: 100vh;
+  height: 50vh;
 }
 
 .product-title {
@@ -114,21 +114,20 @@ ul li a:hover {
 
 .product-image {
   flex-shrink: 0;
-  height: 500px;
-  width: 500px;
+  height: 40vh;
 }
 
 .product-left {
   flex-shrink: 0;
-  height: 100vh;
-  width: 50%;
+  height: 50vh;
+  width: 40vw;
   background-color: #484848;
 }
 
 .product-right {
   flex-shrink: 0;
-  height: 100vh;
-  width: 50%;
+  height: 50vh;
+  width: 40vw;
   background-color: #484848;
 }
 
