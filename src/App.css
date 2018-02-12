@@ -9,6 +9,14 @@ body {
   height: 100%;
 }
 
+header h1 {
+  font-size: 36px;
+}
+
+header p {
+  font-size: 20px;
+}
+
 .wrapper {
   margin: auto;
   width: 100%;
@@ -98,7 +106,7 @@ ul li a:active span {
 
 .intro {
   margin: auto;
-  width: 75vw;
+  width: 50vw;
   color: #afafaf;
   height: 50vh;
 }
@@ -108,7 +116,7 @@ ul li a:active span {
 }
 
 .products {
-  height: 400vh;
+  height: 200vh;
 }
 
 .product {
@@ -125,7 +133,7 @@ ul li a:active span {
   align-items: center;
   margin: auto;
   text-align: left;
-  padding: 5vw 10vw;
+  padding: 0 10vw;
 }
 
 .product-image {
@@ -149,8 +157,9 @@ ul li a:active span {
 
 .contact {
   height: 75vh;
-  margin-top: 50px;
 }
+
+/* Gap between footer and contact divs for some reason, needs removing */
 
 .footer {
   background-color: #222;

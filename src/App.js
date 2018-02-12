@@ -71,8 +71,10 @@ class App extends Component {
               <img src={headerAnimation} className="header-video" alt="header-img" />
               <div className="intro">
                 <img className="page-title" src={logo} alt={logo} />
+                <h1>Connected Dementia Care</h1>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum et condimentum est. Sed sit amet convallis metus. Nam vel cursus justo. Curabitur dictum sollicitudin nulla non rhoncus. Nulla finibus hendrerit tellus vitae consequat. Suspendisse imperdiet magna enim. Cras eget mi metus. Ut facilisis vestibulum sem eu iaculis. Donec nec lorem velit. Aliquam magna sapien, rutrum et risus vitae, aliquam venenatis ex. Ut sit amet blandit urna. Fusce sagittis tellus eu ipsum volutpat  pretium vulputate, non metus. Cras aliquet hendrerit lectus. Sed auctor vestibulum feugiat. Pellentesque tempus libero non neque elementum bibendum. Morbi nibh orci, consequat ac hendrerit nec, feugiat eget metus. Etiam malesuada orci eu nunc cursus viverra. Duis eros purus, ornare eu maximus fringilla, lacinia a erat. Cras convallis elementum imperdiet. Nulla facilisi. Aliquam sed venenatis nisl.
+                  The number of individuals with dementia is on the rise. Alcuris is developing memo, a connected, internet of things suite of products to provide independence to those with dementia and reassurance to those around them.
+                  This is the future of connected care.
                 </p>
               </div>
             </header>
