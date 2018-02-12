@@ -6,7 +6,6 @@
 }
 
 body {
-  overflow: hidden;
   height: 100%;
 }
 
@@ -29,6 +28,7 @@ ul li {
   display: block;
   position: relative;
   color: white;
+  margin: auto;
 }
 
 ul li a {
@@ -43,6 +43,17 @@ ul li a {
 
 ul li a span {
   color: white;
+  width: 4px;
+  height: 4px;
+  background: none;
+  border-radius: 50%;
+  border: 1px solid white;
+  display: block;
+  background-color: white;
+}
+
+ul li a:hover span {
+  color: white;
   width: 10px;
   height: 10px;
   background: none;
@@ -51,8 +62,14 @@ ul li a span {
   display: block;
 }
 
-ul li a:hover {
-  text-decoration: none;
+ul li a:active span {
+  color: white;
+  width: 10px;
+  height: 10px;
+  background: none;
+  border-radius: 50%;
+  border: 1px solid white;
+  display: block;
 }
 
 #navbar {
@@ -108,8 +125,7 @@ ul li a:hover {
   align-items: center;
   margin: auto;
   text-align: left;
-  padding: 40px;
-  padding-right: 100px;
+  padding: 5vw 10vw;
 }
 
 .product-image {
