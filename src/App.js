@@ -101,26 +101,16 @@ class App extends Component {
                   </p>
                 </div>
               </div>
-              <div id="products2" className="product">
-                <div className="product-desc">
-                  <h3 className="product-title">Memo App</h3>
+              <div id="products2" className="product-full">
+                <div className="product-images">
+                  <img className="product-full-image" src={headerAnimation} alt="Memo Hub" />
+                  <img className="product-full-image" src={headerAnimation} alt="Memo Hub" />
+                </div>
+                <div className="product-full-desc">
+                  <h1>Memo Hub</h1>
                   <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum et condimentum est. Sed sit amet convallis metus. Nam vel cursus justo. Curabitur dictum sollicitudin nulla non rhoncus. Nulla finibus hendrerit tellus vitae consequat. Suspendisse imperdiet magna enim. Cras eget mi metus. Ut facilisis vestibulum sem eu iaculis. Donec nec lorem velit. Aliquam magna sapien, rutrum et risus vitae, aliquam venenatis ex. Ut sit amet blandit urna. Fusce sagittis tellus eu ipsum volutpat pretium vulputate non metus.
                   </p>
-                </div>
-                <div className="product-right">
-                  <img className="product-image" src={WearableImage} alt="placeholder"/>
-                </div>
-              </div>
-              <div className="product">
-                <div className="product-desc">
-                  <h3 className="product-title">Memo Hub</h3>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum et condimentum est. Sed sit amet convallis metus. Nam vel cursus justo. Curabitur dictum sollicitudin nulla non rhoncus. Nulla finibus hendrerit tellus vitae consequat. Suspendisse imperdiet magna enim. Cras eget mi metus. Ut facilisis vestibulum sem eu iaculis. Donec nec lorem velit. Aliquam magna sapien, rutrum et risus vitae, aliquam venenatis ex. Ut sit amet blandit urna. Fusce sagittis tellus eu ipsum volutpat pretium vulputate non metus.
-                  </p>
-                </div>
-                <div className="product-right">
-                  <img className="product-image" src={WearableImage} alt="placeholder"/>
                 </div>
               </div>
             </div>

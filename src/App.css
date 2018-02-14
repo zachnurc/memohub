@@ -10,11 +10,11 @@ body {
 }
 
 header h1 {
-  font-size: 36px;
+  font-size: 3vw;
 }
 
 header p {
-  font-size: 20px;
+  font-size: 1.8vw;
 }
 
 .wrapper {
@@ -106,13 +106,9 @@ ul li a:active span {
 
 .intro {
   margin: auto;
-  width: 50vw;
+  width: 60vw;
   color: #afafaf;
-  height: 50vh;
-}
-
-.App-title {
-  font-size: 1.5em;
+  height: 60vh;
 }
 
 .products {
@@ -127,6 +123,11 @@ ul li a:active span {
 .product-title {
   margin: 0;
   font-size: 1.6rem;
+}
+
+.product-desc p {
+  overflow: scroll;
+  font-size: 1.3vw;
 }
 
 .product-desc {
@@ -153,6 +154,27 @@ ul li a:active span {
   height: 50vh;
   width: 40vw;
   background-color: #484848;
+}
+
+.product-full {
+    background-color: #191919;
+    height: 100vh;
+    display: flex;
+}
+
+.product-full-desc {
+  color: #afafaf;
+  width: 40vw;
+  padding: 10vh 5vw;
+}
+
+.product-images {
+  width: 50vw;
+  height: 100vh;
+}
+
+.product-full-image {
+  height: 45vh;
 }
 
 .contact {
