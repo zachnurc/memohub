@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import logo from './media/logo.png';
-import headerAnimation from './media/12.jpg';
-import WearableImage from './media/wearable.jpg';
+import headerAnimation from './media/header-video.mp4';
+import packageContents from './media/packaging-contents.jpg';
+import pageBorder from './media/page-border.png';
+import features from './media/features.png';
 import './App.css';
-import Link from './Link.js'
 
 //scroll event listener
 //e.defaultOverride()
@@ -66,76 +67,90 @@ class App extends Component {
     return (
       <div className="App">
         <div id="main">
+          <header>
+            <img className="header-logo" src={logo} alt={logo} />
+          </header>
           <div id="container">
-            <header id="home" className="header">
-              <img src={headerAnimation} className="header-video" alt="header-img" />
+            <div id="home" className="home">
               <div className="intro">
-                <img className="page-title" src={logo} alt={logo} />
-                <h1>Connected Dementia Care</h1>
-                <p>
-                  The number of individuals with dementia is on the rise. Alcuris is developing memo, a connected, internet of things suite of products to provide independence to those with dementia and reassurance to those around them.
-                  This is the future of connected care.
-                </p>
-              </div>
-            </header>
-            <div className="products">
-              <div id="products1" className="product">
-                <div className="product-left">
-                  <img className="product-image" src={WearableImage} alt="placeholder"/>
-                </div>
-                <div className="product-desc">
-                  <h3 className="product-title">Wearable Panic Button</h3>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum et condimentum est. Sed sit amet convallis metus. Nam vel cursus justo. Curabitur dictum sollicitudin nulla non rhoncus. Nulla finibus hendrerit tellus vitae consequat. Suspendisse imperdiet magna enim. Cras eget mi metus. Ut facilisis vestibulum sem eu iaculis. Donec nec lorem velit. Aliquam magna sapien, rutrum et risus vitae, aliquam venenatis ex. Ut sit amet blandit urna. Fusce sagittis tellus eu ipsum volutpat pretium vulputate non metus.
-                  </p>
-                </div>
-              </div>
-              <div className="product">
-                <div className="product-left">
-                  <img className="product-image" src={WearableImage} alt="placeholder"/>
-                </div>
-                <div className="product-desc">
-                  <h3 className="product-title">IoT Sensor</h3>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum et condimentum est. Sed sit amet convallis metus. Nam vel cursus justo. Curabitur dictum sollicitudin nulla non rhoncus. Nulla finibus hendrerit tellus vitae consequat. Suspendisse imperdiet magna enim. Cras eget mi metus. Ut facilisis vestibulum sem eu iaculis. Donec nec lorem velit. Aliquam magna sapien, rutrum et risus vitae, aliquam venenatis ex. Ut sit amet blandit urna. Fusce sagittis tellus eu ipsum volutpat pretium vulputate non metus.
-                  </p>
-                </div>
-              </div>
-              <div id="products2" className="product-full">
-                <div className="product-images">
-                  <img className="product-full-image" src={headerAnimation} alt="Memo Hub" />
-                  <img className="product-full-image" src={headerAnimation} alt="Memo Hub" />
-                </div>
-                <div className="product-full-desc">
-                  <h1>Memo Hub</h1>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum et condimentum est. Sed sit amet convallis metus. Nam vel cursus justo. Curabitur dictum sollicitudin nulla non rhoncus. Nulla finibus hendrerit tellus vitae consequat. Suspendisse imperdiet magna enim. Cras eget mi metus. Ut facilisis vestibulum sem eu iaculis. Donec nec lorem velit. Aliquam magna sapien, rutrum et risus vitae, aliquam venenatis ex. Ut sit amet blandit urna. Fusce sagittis tellus eu ipsum volutpat pretium vulputate non metus.
-                  </p>
-                </div>
+                <h1>Yeah. We think it looks good too.</h1>
+                <h3>Reassurance | Independence | Insight</h3>
+                <video className="home-video" src={headerAnimation} autoplay />
               </div>
             </div>
-            <div id="contact" className="contact">
-              <h1>Contact</h1>
+
+            <div id="meet-memo">
+              <div className="pageBorder">
+                <img src={pageBorder} className="border-img"/>
+                <h2>Meet Memo</h2>
+              </div>
+              <p>
+                Memo is a digital assisted living platform.
+                With the potential to connect to virtually any IoT sensor,
+                meaning that as your needs evolve, so does memo.
+              </p>
+              <img src={packageContents} alt="Package Contents" className="package-img"/>
+            </div>
+
+            <div id="features">
+              <div className="pageBorder">
+                <img src={pageBorder} className="border-img"/>
+                <h2>What can Memo do?</h2>
+              </div>
+              <div className="features-container">
+                <p>
+                  3G - Can call a family memberor monitoring centre, and connect to the internet.
+                </p>
+                <p>
+                  Multi protocol - If it's wireless we should be able to connect to it.
+                </p>
+                <p>
+                  Memo app - keeps family updated and reassured.
+                </p>
+                <p>
+                  Carer logging - via a key fob, carers can touch in and out, giving reassurance they have arrived.
+                </p>
+                <p>
+                  Works out of the box - just 3 mins setup via the Memo app.
+                </p>
+              </div>
+            </div>
+
+            <div id="connectivity">
+              <div className="pageBorder">
+                <img src={pageBorder} className="border-img"/>
+                <h2>What can Memo connect to?</h2>
+              </div>
+            </div>
+
+            <div id="memo-app">
+              <div className="pageBorder">
+                <img src={pageBorder} className="border-img"/>
+                <h2>What is the Memo app?</h2>
+              </div>
+              <p>
+                The Memo app allows family to stay updated on all products connected
+                to the hub, such as if a door has been opened in the middle of the night,
+                or a carer has failed to turn up.
+              </p>
+            </div>
+
+            <div id="local-authorities">
+              <div className="pageBorder">
+                <img src={pageBorder} className="border-img"/>
+                <h2>Integration with Local Authorities</h2>
+              </div>
+            </div>
+
+            <div id="contact">
+              <div className="pageBorder">
+                <img src={pageBorder} className="border-img"/>
+                <h2>Contact</h2>
+              </div>
             </div>
             <footer className="footer">
               <h3>Copyright</h3>
             </footer>
-          </div>
-          <div id="navbar">
-            <ul>
-              <li>
-                <Link ref='home' href='#home' class="active"/>
-              </li>
-              <li>
-                <Link ref='products1' href='#products1'/>
-              </li>
-              <li>
-                <Link ref='products2' href='#products2'/>
-              </li>
-              <li>
-                <Link ref='contact' href='#contact'/>
-              </li>
-            </ul>
           </div>
         </div>
       </div>
