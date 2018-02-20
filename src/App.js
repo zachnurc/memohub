@@ -3,14 +3,10 @@ import logo from './media/logo.png';
 import headerAnimation from './media/header-video.mp4';
 import packageContents from './media/packaging-contents.jpg';
 import pageBorder from './media/page-border.png';
-import features from './media/features.png';
 import './App.css';
 
-//scroll event listener
-//e.defaultOverride()
-//choose amount to scroll
-
-//jumo site uses css transform, on scroll transforms by screensize
+//edit background image on features needs stretching sideways
+//scroll handler needs to cause link call not just scroll potentially use a select case
 
 class App extends Component {
 
@@ -54,13 +50,13 @@ class App extends Component {
       }
     }, false);
 
-    window.addEventListener("scroll", (event) => {
-      if (window.scrollY > this.state.scrollLocation){
-        this.handleScroll('down');
-      }else if(window.scrollY < this.state.scrollLocation){
-        this.handleScroll('up');
-      }
-    }, false);
+    // window.addEventListener("scroll", (event) => {
+    //   if (window.scrollY > this.state.scrollLocation){
+    //     this.handleScroll('down');
+    //   }else if(window.scrollY < this.state.scrollLocation){
+    //     this.handleScroll('up');
+    //   }
+    // }, false);
   }
 
   render() {
@@ -68,14 +64,39 @@ class App extends Component {
       <div className="App">
         <div id="main">
           <header>
-            <img className="header-logo" src={logo} alt={logo} />
+            <a href="#home">
+              <img className="header-logo" src={logo} alt={logo} />
+            </a>
+
+            <div id="navbar" >
+              <ul>
+                <li>
+                  <a href="#meet-memo">Meet Memo</a>
+                </li>
+                <li>
+                  <a href="#features">Features</a>
+                </li>
+                <li>
+                  <a href="#connectivity">Connectivity</a>
+                </li>
+                <li>
+                  <a href="#memo-app">Memo App</a>
+                </li>
+                <li>
+                  <a href="#local-authorities">Local Authorities</a>
+                </li>
+                <li>
+                  <a href="#contact">Contact Us</a>
+                </li>
+              </ul>
+            </div>
+
           </header>
           <div id="container">
             <div id="home" className="home">
               <div className="intro">
                 <h1>Yeah. We think it looks good too.</h1>
                 <h3>Reassurance | Independence | Insight</h3>
-                <video className="home-video" src={headerAnimation} autoplay />
               </div>
             </div>
 
@@ -93,26 +114,28 @@ class App extends Component {
             </div>
 
             <div id="features">
-              <div className="pageBorder">
-                <img src={pageBorder} className="border-img"/>
-                <h2>What can Memo do?</h2>
-              </div>
               <div className="features-container">
-                <p>
-                  3G - Can call a family memberor monitoring centre, and connect to the internet.
-                </p>
-                <p>
-                  Multi protocol - If it's wireless we should be able to connect to it.
-                </p>
-                <p>
-                  Memo app - keeps family updated and reassured.
-                </p>
-                <p>
-                  Carer logging - via a key fob, carers can touch in and out, giving reassurance they have arrived.
-                </p>
-                <p>
-                  Works out of the box - just 3 mins setup via the Memo app.
-                </p>
+                <div className="pageBorder">
+                  <img src={pageBorder} className="border-img"/>
+                  <h2>What can Memo do?</h2>
+                </div>
+                <div className="left-half">
+                  <p>
+                    3G - Can call a family memberor monitoring centre, and connect to the internet.
+                  </p>
+                  <p>
+                    Multi protocol - If it's wireless we should be able to connect to it.
+                  </p>
+                  <p>
+                    Memo app - keeps family updated and reassured.
+                  </p>
+                  <p>
+                    Carer logging - via a key fob, carers can touch in and out, giving reassurance they have arrived.
+                  </p>
+                  <p>
+                    Works out of the box - just 3 mins setup via the Memo app.
+                  </p>
+                </div>
               </div>
             </div>
 
@@ -120,6 +143,39 @@ class App extends Component {
               <div className="pageBorder">
                 <img src={pageBorder} className="border-img"/>
                 <h2>What can Memo connect to?</h2>
+              </div>
+              <div className="left-half">
+                <p>We are launching Memo with our own sensors:</p>
+                <ul>
+                  <li>Panic button</li>
+                  <li>Smoke detector</li>
+                  <li>Motion detector</li>
+                  <li>Temperature sensor</li>
+                  <li>Door sensor</li>
+                  <li>Smart plug</li>
+                </ul>
+                <p>Coming Soon: <br></br>
+                Compatability with any Z-wave, Zigbee or Bluetooth sensor, such as:</p>
+                <ul>
+                  <li>Heart rate monitor</li>
+                  <li>Wireless speaker</li>
+                  <li>Voice alerts</li>
+                  <li>Smart lightbulbs</li>
+                </ul>
+              </div>
+              <div className="right-half">
+                <p>
+                  We have designed Memo to be a platform, allowing it to have the
+                  potetial to connect to any 3rd party Wireless product. <br/>
+                  Why? <br />
+                  Because every family's needs are different, and no single product
+                  can meet those needs.
+                </p>
+                <p>
+                  Assistive technology isn't just about panic buttons, it's about
+                  helping individuals stay independent for longer, whether that be via
+                  gentle reminders or just an easier way to listen to music.
+                </p>
               </div>
             </div>
 
@@ -133,6 +189,21 @@ class App extends Component {
                 to the hub, such as if a door has been opened in the middle of the night,
                 or a carer has failed to turn up.
               </p>
+              <ul>
+                <li>
+                  <p>Set up the hub with the App.</p>
+                </li>
+                <li>
+                  <p>Add some useful information such as medication lists and conditions.</p>
+                </li>
+                <li>
+                  <p>Decide what you want to be notified about and how.</p>
+                </li>
+                <li>
+                  <p>Be reassured that if an event happens that you want to know about,
+                  you will. Immediately.</p>
+                </li>
+              </ul>
             </div>
 
             <div id="local-authorities">
@@ -143,14 +214,16 @@ class App extends Component {
             </div>
 
             <div id="contact">
-              <div className="pageBorder">
-                <img src={pageBorder} className="border-img"/>
-                <h2>Contact</h2>
+              <div className="container">
+                <div className="pageBorder">
+                  <img src={pageBorder} className="border-img"/>
+                  <h2>Contact</h2>
+                </div>
               </div>
+              <footer className="footer">
+                <h3>Copyright</h3>
+              </footer>
             </div>
-            <footer className="footer">
-              <h3>Copyright</h3>
-            </footer>
           </div>
         </div>
       </div>
