@@ -3,6 +3,10 @@ import logo from './media/logo.png';
 import headerAnimation from './media/header-video.mp4';
 import packageContents from './media/packaging-contents.jpg';
 import pageBorder from './media/page-border.png';
+import setupPhone from './media/Setup phone.png';
+import settingsPhone from './media/Settings Phone.png';
+import reassurancePhone from './media/Reassurance Phone.png';
+import dashboard from './media/Dashboard in screen.png';
 import './App.css';
 
 //edit background image on features needs stretching sideways
@@ -19,10 +23,10 @@ class App extends Component {
 
   handleKeyPress(keycode){
 
-    if(keycode === 40){
+    if(keycode === 40 || keycode === 34){
       this.handleScroll('down');
     }
-    else if(keycode === 38){
+    else if(keycode === 38 || keycode === 33){
       this.handleScroll('up');
     }
   }
@@ -191,17 +195,34 @@ class App extends Component {
               </p>
               <ul>
                 <li>
-                  <p>Set up the hub with the App.</p>
+                  <p>Set up the hub with the App.
+                  </p>
                 </li>
                 <li>
                   <p>Add some useful information such as medication lists and conditions.</p>
                 </li>
                 <li>
-                  <p>Decide what you want to be notified about and how.</p>
+                  <p>Decide what you want to be notified about and how.
+                  </p>
                 </li>
                 <li>
                   <p>Be reassured that if an event happens that you want to know about,
-                  you will. Immediately.</p>
+                    you will. Immediately.
+                  </p>
+                </li>
+              </ul>
+              <ul>
+                <li>
+                  <img className="app-img" src={setupPhone} alt={setupPhone} />
+                </li>
+                <li>
+                  <img className="app-img" src={setupPhone} alt={setupPhone} />
+                </li>
+                <li>
+                  <img className="app-img" src={settingsPhone} alt={settingsPhone} />
+                </li>
+                <li>
+                  <img className="app-img" src={reassurancePhone} alt={reassurancePhone} />
                 </li>
               </ul>
             </div>
@@ -210,6 +231,9 @@ class App extends Component {
               <div className="pageBorder">
                 <img src={pageBorder} className="border-img"/>
                 <h2>Integration with Local Authorities</h2>
+              </div>
+              <div className="left-half">
+                <img src={dashboard} alt={dashboard} />
               </div>
             </div>
 

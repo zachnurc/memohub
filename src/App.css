@@ -66,8 +66,9 @@ header {
 
 .home {
   background: url("media/home.jpg");
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
+  background-position: center;
   background-color: #181818;
   padding-top: 8vh;
   height: 92vh;
@@ -133,7 +134,7 @@ h2 {
   background-size: cover;
   padding-top: 8vh;
   height: 92vh;
-  background-position: center 0;
+  background-position: center center;
   background-repeat: no-repeat;
 
   border-image-source: url("media/features.png");
@@ -201,9 +202,19 @@ h2 {
   margin: 0;
 }
 
+.app-img {
+  width: 12vw;
+  height: 24vw;
+}
+
 #local-authorities {
   padding-top: 8vh;
   height: 92vh;
+}
+
+img {
+  margin: auto;
+  height: 40vh;
 }
 
 #contact {
