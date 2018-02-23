@@ -225,7 +225,6 @@ img {
 .container {
   height: 77vh;
 }
-/* Gap between footer and contact divs for some reason, needs removing */
 
 .footer {
   background-color: #222;
@@ -265,7 +264,150 @@ input[type=checkbox]:checked ~ #navbar{
 
 }
 
-/* style for height less than 480 pixel for sideways phone */
+@media only screen and (max-height: 480px) {
+
+  .mobile-header-logo {
+    position: absolute;
+    left: 60%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    height: 8vh;
+  }
+
+  .home h1 {
+    font-size: 1.4rem;
+  }
+
+  .home h3 {
+    font-size: 0.8rem;
+  }
+
+  #navbar {
+    margin-top: 8vh;
+    position: fixed;
+    display: none;
+    left: 0;
+    width: 25vw;
+    background-color: white;
+  }
+
+  #navbar li:after {
+    content: "";
+  }
+
+  #navbar ul {
+    margin: 0;
+    padding-left: 0;
+  }
+
+  #navbar ul li {
+    margin-bottom: 1px;
+    float: none;
+    display: block;
+  }
+
+  .show-menu {
+    padding-left: 5vw;
+    margin: auto 0;
+    display: block;
+  }
+
+  #meet-memo {
+    padding-top: 0;
+    height: auto;
+  }
+
+  #meet-memo p {
+    margin: 5vh 5vw;
+  }
+
+  .img-container{
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  .package-img {
+    transform: translate(-21%, 0);
+  }
+
+  .pageBorder {
+    background-image: url("media/mobile-page-border.png");
+    height: 8vh;
+    background-position: center center;
+    background-size: cover;
+  }
+
+  #features {
+    background-position: left;
+    height: auto;
+    padding-top: 0;
+  }
+
+  #features p {
+    padding-right: 5vw;
+  }
+
+  #connectivity {
+    background-image: none;
+    padding-top: 0px;
+    height: auto;
+  }
+
+  #connectivity p {
+    margin: 5vh 5vw;
+  }
+
+  .connectivityImg{
+    transform: translate( -10%, 0);
+  }
+
+  h2 {
+    width: 100%;
+  }
+
+  #memo-app {
+    padding-top: 0;
+    height: auto;
+  }
+
+  #memo-app p {
+    margin: 5vh 5vw;
+  }
+
+  #memo-app ul li {
+    padding-right: 5vw;
+    display: block;
+    width: auto;
+  }
+
+  #memo-app ul {
+    list-style: circle;
+    padding-left: auto;
+  }
+
+  .app-img {
+    width: 50vw;
+    height: 50vh;
+  }
+
+  #local-authorities {
+    padding-top: 0;
+    height: auto;
+  }
+
+  #local-authorities p {
+    margin: 5vh 5vw;
+  }
+
+  #local-authorities li {
+    padding-right: 5vw;
+  }
+
+  #contact {
+    padding-left: 0;
+  }
+
+}
 
 @media only screen and (max-width: 480px) {
 

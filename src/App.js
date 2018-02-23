@@ -120,7 +120,13 @@ class App extends Component {
 
     const { width } = this.state;
     const { scrollLocation } = this.state;
-    const isMobile = window.innerWidth <= 480;
+          const isMobile = window.innerWidth <= 480;
+
+    if (window.innerWidth <= 480) {
+      const isMobile = window.innerWidth <= 480;
+    } else if (window.innerHeight <= 480){
+      const isMobile = window.innerHeight <= 480;
+    }
 
     if (isMobile){
       return (
