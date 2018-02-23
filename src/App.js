@@ -48,7 +48,7 @@ class App extends Component {
   handleWindowSizeChange = () => {
   this.setState({ width: window.innerWidth });
 
-  if(window.innerWidth <= 760){
+  if(window.innerWidth <= 1024){
     window.removeEventListener("keydown", (e) => {
       // space, page up, page down and arrow keys:
       if([32, 33, 34, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
@@ -69,7 +69,7 @@ class App extends Component {
     }, false);
   }
 
-  if(window.innerWidth > 760){
+  if(window.innerWidth > 1024){
     window.addEventListener("keydown", (e) => {
       // space, page up, page down and arrow keys:
       if([32, 33, 34, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
@@ -94,7 +94,7 @@ class App extends Component {
   componentDidMount() {
     window.addEventListener('resize', this.handleWindowSizeChange);
 
-    if(window.innerWidth > 760){
+    if(window.innerWidth > 1024){
       window.addEventListener("keydown", (e) => {
         // space, page up, page down and arrow keys:
         if([32, 33, 34, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
@@ -120,7 +120,7 @@ class App extends Component {
 
     const { width } = this.state;
     const { scrollLocation } = this.state;
-    const isMobile = window.innerWidth <= 760;
+    const isMobile = window.innerWidth <= 1024;
 
     if (isMobile){
       return (

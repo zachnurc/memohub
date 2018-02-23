@@ -264,19 +264,7 @@ input[type=checkbox]:checked ~ #navbar{
 
 }
 
-@media only screen and (max-width: 900px) {
-
-  .header-logo {
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    height: 6vh;
-  }
-
-}
-
-@media only screen and (max-width: 760px) {
+@media only screen and (max-width: 1024px) {
 
   .mobile-header-logo {
     position: absolute;
