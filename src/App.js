@@ -11,12 +11,8 @@ import reassurancePhone from './media/Reassurance Phone.png';
 import dashboard from './media/Dashboard in screen.png';
 import './App.css';
 
-//edit background image on features needs stretching sideways
-//scroll handler needs to cause link call not just scroll potentially use a select case
-
-//select case for all possible pages
-//when a tag clicked or on scroll call function which has a switch case
-//switch case opens correct page using url
+//navbar lenth fixed
+//scroll animation and timeout
 
 class App extends Component {
 
@@ -129,13 +125,13 @@ class App extends Component {
                 <li>
                   <a href="#features" onClick={() => this.setState({scrollLocation: window.scrollY})}>Features</a>
                 </li>
-                <li>
+                <li className="li-long">
                   <a href="#connectivity" onClick={() => this.setState({scrollLocation: window.scrollY})}>Connectivity</a>
                 </li>
                 <li>
                   <a href="#memo-app" onClick={() => this.setState({scrollLocation: window.scrollY})}>Memo App</a>
                 </li>
-                <li>
+                <li className="li-long">
                   <a href="#local-authorities" onClick={() => this.setState({scrollLocation: window.scrollY})}>Local Authorities</a>
                 </li>
                 <li>

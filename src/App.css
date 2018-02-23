@@ -37,6 +37,7 @@ body {
 #navbar ul li{
   float: left;
   display: inline;
+  min-width: 6vw;
 }
 
 #navbar a {
@@ -46,7 +47,7 @@ body {
 }
 
 #navbar a:hover {
-  font-size: 0.9rem;
+  color: #6cfbfe;
 }
 
 header {
@@ -273,6 +274,10 @@ input[type=checkbox]:checked ~ #navbar{
     top: 50%;
     transform: translate(-50%, -50%);
     height: 8vh;
+  }
+
+  #features {
+      background-position: left;
   }
 
 }
