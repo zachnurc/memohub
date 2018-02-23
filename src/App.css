@@ -37,7 +37,6 @@ body {
 #navbar ul li{
   float: left;
   display: inline;
-  min-width: 6vw;
 }
 
 #navbar a {

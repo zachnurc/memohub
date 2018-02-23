@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import FontAwesome from 'react-fontawesome';
 import logo from './media/logo.png';
-import headerAnimation from './media/header-video.mp4';
 import packageContents from './media/packaging-contents.jpg';
 import pageBorder from './media/page-border.png';
 import mobilePageBorder from './media/mobile-page-border.png';
@@ -48,6 +47,28 @@ class App extends Component {
 
   handleWindowSizeChange = () => {
   this.setState({ width: window.innerWidth });
+
+  if(window.innerWidth <= 760){
+    window.removeEventListener("keydown", (e) => {
+      // space, page up, page down and arrow keys:
+      if([32, 33, 34, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
+        e.preventDefault();
+        this.handleKeyPress(e.keyCode);
+      }
+    }, false);
+
+    window.removeEventListener("scroll", (event) => {
+      if (window.scrollY > this.state.scrollLocation){
+        this.handleScroll('down');
+        this.setState({ scrollLocation : window.scrollY});
+      }else if(window.scrollY < this.state.scrollLocation){
+        this.handleScroll('up');
+        this.setState({ scrollLocation : window.scrollY});
+      }
+      console.log(this.state.scrollLocation);
+    }, false);
+  }
+
   if(window.innerWidth > 760){
     window.addEventListener("keydown", (e) => {
       // space, page up, page down and arrow keys:
@@ -126,13 +147,13 @@ class App extends Component {
                 <li>
                   <a href="#features" onClick={() => this.setState({scrollLocation: window.scrollY})}>Features</a>
                 </li>
-                <li className="li-long">
+                <li>
                   <a href="#connectivity" onClick={() => this.setState({scrollLocation: window.scrollY})}>Connectivity</a>
                 </li>
                 <li>
                   <a href="#memo-app" onClick={() => this.setState({scrollLocation: window.scrollY})}>Memo App</a>
                 </li>
-                <li className="li-long">
+                <li>
                   <a href="#local-authorities" onClick={() => this.setState({scrollLocation: window.scrollY})}>Local Authorities</a>
                 </li>
                 <li>
