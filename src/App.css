@@ -52,6 +52,7 @@ body {
 header {
   display: flex;
   background-color: white;
+  min-height: 48px;
   height: 8vh;
   position: fixed;
   width: 100vw;
