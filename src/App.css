@@ -467,8 +467,8 @@ input[type=checkbox]:checked ~ #navbar{
   }
 
   .img-container{
-    width: 100%;
-    overflow-x: hidden;
+    width: 100vw;
+    overflow: hidden;
   }
 
   .package-img {

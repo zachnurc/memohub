@@ -398,7 +398,9 @@ class App extends Component {
                   wireless product, from speakers to door sensors, meaning
                   that as your needs evolve; so does Memo.
                 </p>
-                <img src={packageContents} alt="Package Contents" className="package-img"/>
+                <div className="img-container">
+                  <img src={packageContents} alt="Package Contents" className="package-img"/>
+                </div>
               </div>
 
               <div id="features">
