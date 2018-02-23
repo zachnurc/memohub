@@ -31,7 +31,7 @@ body {
 }
 
 #navbar {
-  position: absolute;
+  position: fixed;
   right: 2vw;
 }
 
@@ -61,14 +61,6 @@ header {
 
 ::-webkit-scrollbar {
     display: none;
-}
-
-#main {
-
-}
-
-#container {
-
 }
 
 .home h1{
@@ -122,7 +114,7 @@ header {
 
 h2 {
   position: absolute;
-  font-size: 1.4vw;
+  font-size: 1rem;
   margin: 0 auto;
   top: 30%;
   left: 50%;
@@ -271,10 +263,12 @@ img {
 
 input[type=checkbox]{
   display: none;
+  z-index: 9999;
 }
 
 input[type=checkbox]:checked ~ #navbar{
   display: block;
+  z-index: 9999;
 }
 
 @media only screen and (max-width: 1300px){
@@ -295,7 +289,6 @@ input[type=checkbox]:checked ~ #navbar{
   .header-logo {
     position: absolute;
     left: 0;
-    padding-left: 40%;
     top: 50%;
     transform: translate(-50%, -50%);
     height: 6vh;
@@ -315,7 +308,7 @@ input[type=checkbox]:checked ~ #navbar{
 
   #navbar {
     margin-top: 8vh;
-    position: absolute;
+    position: fixed;
     display: none;
     left: 0;
     width: 25vw;
@@ -338,7 +331,8 @@ input[type=checkbox]:checked ~ #navbar{
   }
 
   .show-menu {
-    margin: auto 0 auto 5vw;
+    padding-left: 5vw;
+    margin: auto 0;
     display: block;
   }
 
