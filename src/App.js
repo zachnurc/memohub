@@ -48,7 +48,7 @@ class App extends Component {
   handleWindowSizeChange = () => {
   this.setState({ width: window.innerWidth });
 
-  if(window.innerWidth <= 1024){
+  if(window.innerWidth <= 480 || window.innerHeight <= 480){
     window.removeEventListener("keydown", (e) => {
       // space, page up, page down and arrow keys:
       if([32, 33, 34, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
@@ -69,7 +69,7 @@ class App extends Component {
     }, false);
   }
 
-  if(window.innerWidth > 1024){
+  if(window.innerWidth > 480 && window.innerHeight > 480){
     window.addEventListener("keydown", (e) => {
       // space, page up, page down and arrow keys:
       if([32, 33, 34, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
@@ -94,7 +94,7 @@ class App extends Component {
   componentDidMount() {
     window.addEventListener('resize', this.handleWindowSizeChange);
 
-    if(window.innerWidth > 1024){
+    if(window.innerWidth > 480 && window.innerHeight > 480){
       window.addEventListener("keydown", (e) => {
         // space, page up, page down and arrow keys:
         if([32, 33, 34, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
