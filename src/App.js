@@ -90,44 +90,44 @@ class App extends Component {
       // <Router>
         <div className="App">
           <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" />
+          <header>
+            <a href="#home" onClick={() => this.setState({scrollLocation: 0})}>
+              <img className="header-logo" src={logo} alt={logo} />
+            </a>
+
+            <label for="show-menu" class="show-menu">
+              <FontAwesome
+                name='fas fa-bars'
+                size='2x'
+              />
+            </label>
+            <input type="checkbox" id="show-menu" role="button" />
+
+            <div id="navbar" >
+              <ul>
+                <li>
+                  <a href="#meet-memo" onClick={() => this.setState({scrollLocation: window.scrollY})}>Meet Memo</a>
+                </li>
+                <li>
+                  <a href="#features" onClick={() => this.setState({scrollLocation: window.scrollY})}>Features</a>
+                </li>
+                <li>
+                  <a href="#connectivity" onClick={() => this.setState({scrollLocation: window.scrollY})}>Connectivity</a>
+                </li>
+                <li>
+                  <a href="#memo-app" onClick={() => this.setState({scrollLocation: window.scrollY})}>Memo App</a>
+                </li>
+                <li>
+                  <a href="#local-authorities" onClick={() => this.setState({scrollLocation: window.scrollY})}>Local Authorities</a>
+                </li>
+                <li>
+                  <a href="#contact" onClick={() => this.setState({scrollLocation: window.scrollY})}>Contact Us</a>
+                </li>
+              </ul>
+            </div>
+
+          </header>
           <div id="main">
-            <header>
-              <a href="#home" onClick={() => this.setState({scrollLocation: 0})}>
-                <img className="header-logo" src={logo} alt={logo} />
-              </a>
-
-              <label for="show-menu" class="show-menu">
-                <FontAwesome
-                  name='fas fa-bars'
-                  size='2x'
-                />
-              </label>
-              <input type="checkbox" id="show-menu" role="button" />
-
-              <div id="navbar" >
-                <ul>
-                  <li>
-                    <a href="#meet-memo" onClick={() => this.setState({scrollLocation: window.scrollY})}>Meet Memo</a>
-                  </li>
-                  <li>
-                    <a href="#features" onClick={() => this.setState({scrollLocation: window.scrollY})}>Features</a>
-                  </li>
-                  <li>
-                    <a href="#connectivity" onClick={() => this.setState({scrollLocation: window.scrollY})}>Connectivity</a>
-                  </li>
-                  <li>
-                    <a href="#memo-app" onClick={() => this.setState({scrollLocation: window.scrollY})}>Memo App</a>
-                  </li>
-                  <li>
-                    <a href="#local-authorities" onClick={() => this.setState({scrollLocation: window.scrollY})}>Local Authorities</a>
-                  </li>
-                  <li>
-                    <a href="#contact" onClick={() => this.setState({scrollLocation: window.scrollY})}>Contact Us</a>
-                  </li>
-                </ul>
-              </div>
-
-            </header>
             <div id="container">
               <div id="home" className="home">
                 <div className="intro">
