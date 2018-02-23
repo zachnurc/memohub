@@ -46,6 +46,7 @@ class App extends Component {
   }
 
   handleWindowSizeChange = () => {
+    console.log(window.innerWidth);
   this.setState({ width: window.innerWidth });
 
   if(window.innerWidth <= 480 || window.innerHeight <= 480){
@@ -120,7 +121,7 @@ class App extends Component {
 
     const { width } = this.state;
     const { scrollLocation } = this.state;
-          const isMobile = window.innerWidth <= 480;
+    const isMobile = window.innerWidth <= 480;
 
     if (window.innerWidth <= 480) {
       const isMobile = window.innerWidth <= 480;
@@ -131,6 +132,7 @@ class App extends Component {
     if (isMobile){
       return (
         <div className="App">
+          <meta name="viewport" content="width=device-width, initial-scale=1"/>
           <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" />
           <header>
             <a href="#home" onClick={() => this.setState({scrollLocation: 0})}>
@@ -332,6 +334,7 @@ class App extends Component {
     } else {
       return (
         <div className="App">
+          <meta name="viewport" content="width=device-width, initial-scale=1"/>
           <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" />
           <header>
             <a href="#home" onClick={() => this.setState({scrollLocation: 0})}>
