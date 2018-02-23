@@ -17,6 +17,10 @@ body {
   height: 8vh;
 }
 
+.footer-logo{
+  height: 8vh;
+}
+
 #navbar li:after {
   content: " | ";
 }
@@ -237,12 +241,92 @@ img {
 }
 
 .container {
-  height: 67vh;
+  height: 77vh;
 }
 /* Gap between footer and contact divs for some reason, needs removing */
 
 .footer {
   background-color: #222;
   color: white;
-  height: 25vh;
+  height: 15vh;
+}
+
+.show-menu {
+  display: none;
+  text-decoration: none;
+}
+
+input[type=checkbox]{
+  display: none;
+}
+
+input[type=checkbox]:checked ~ #navbar{
+  display: block;
+}
+
+@media only screen and (max-width: 1300px){
+
+  .header-logo {
+    position: absolute;
+    left: 0;
+    padding-left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    height: 8vh;
+  }
+
+}
+
+@media only screen and (max-width: 900px) {
+
+  .header-logo {
+    position: absolute;
+    left: 0;
+    padding-left: 40%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    height: 6vh;
+  }
+
+}
+
+@media only screen and (max-width: 760px) {
+
+  .header-logo {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    height: 8vh;
+  }
+
+  #navbar {
+    margin-top: 8vh;
+    position: absolute;
+    display: none;
+    left: 0;
+    width: 25vw;
+    background-color: white;
+  }
+
+  #navbar li:after {
+    content: "";
+  }
+
+  #navbar ul {
+    margin: 0;
+    padding-left: 0;
+  }
+
+  #navbar ul li {
+    margin-bottom: 1px;
+    float: none;
+    display: block;
+  }
+
+  .show-menu {
+    margin: auto 0 auto 5vw;
+    display: block;
+  }
+
 }
