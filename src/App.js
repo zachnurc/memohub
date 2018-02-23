@@ -196,39 +196,36 @@ class App extends Component {
                 <div className="pageBorder">
                   <h2>What can Memo connect to?</h2>
                 </div>
-                <div className="left-half">
-                  <p>We are launching Memo with our own sensors:</p>
-                  <ul>
-                    <li>Panic button</li>
-                    <li>Smoke detector</li>
-                    <li>Motion detector</li>
-                    <li>Temperature sensor</li>
-                    <li>Door sensor</li>
-                    <li>Smart plug</li>
-                  </ul>
-                  <p>Coming Soon: <br></br>
-                  Compatability with any Z-wave, Zigbee or Bluetooth sensor, such as:</p>
-                  <ul>
-                    <li>Heart rate monitor</li>
-                    <li>Wireless speaker</li>
-                    <li>Voice alerts</li>
-                    <li>Smart lightbulbs</li>
-                  </ul>
-                </div>
-                <div className="right-half">
-                  <p>
-                    We have designed Memo to be a platform, allowing it to have the
-                    potetial to connect to any 3rd party Wireless product. <br/>
-                    Why? <br />
-                    Because every family's needs are different, and no single product
-                    can meet those needs.
-                  </p>
-                  <p>
-                    Assistive technology isn't just about panic buttons, it's about
-                    helping individuals stay independent for longer, whether that be via
-                    gentle reminders or just an easier way to listen to music.
-                  </p>
-                </div>
+                <p>We are launching Memo with our own sensors:</p>
+                <ul>
+                  <li>Panic button</li>
+                  <li>Smoke detector</li>
+                  <li>Motion detector</li>
+                  <li>Temperature sensor</li>
+                  <li>Door sensor</li>
+                  <li>Smart plug</li>
+                </ul>
+                <p>Coming Soon: <br></br>
+                Compatability with any Z-wave, Zigbee or Bluetooth sensor, such as:</p>
+                <ul>
+                  <li>Heart rate monitor</li>
+                  <li>Wireless speaker</li>
+                  <li>Voice alerts</li>
+                  <li>Smart lightbulbs</li>
+                </ul>
+
+                <p>
+                  We have designed Memo to be a platform, allowing it to have the
+                  potetial to connect to any 3rd party Wireless product. <br/>
+                  Why? <br />
+                  Because every family's needs are different, and no single product
+                  can meet those needs.
+                </p>
+                <p>
+                  Assistive technology isn't just about panic buttons, it's about
+                  helping individuals stay independent for longer, whether that be via
+                  gentle reminders or just an easier way to listen to music.
+                </p>
               </div>
 
               <div id="memo-app">
