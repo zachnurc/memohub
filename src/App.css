@@ -64,13 +64,14 @@ header {
 }
 
 .home h1{
+  font-size: 1.6rem;
   margin: auto;
   padding-top: 5vh;
 }
 
 .home h3 {
   margin: auto;
-  font-size: 1rem;
+  font-size: 0.9rem;
 }
 
 .home {
@@ -81,15 +82,6 @@ header {
   background-color: #181818;
   padding-top: 8vh;
   height: 92vh;
-}
-
-#home-video {
-  position: relative;
-  right: 0;
-  top: 0;
-  width: 98vw;
-  height: 90vh;
-  z-index: 0;
 }
 
 .intro {
@@ -131,7 +123,7 @@ h2 {
 
 #meet-memo p {
   margin: 2vh 20vw;
-  font-size: 1.4rem;
+  font-size: 1.1rem;
 }
 
 .package-img{
@@ -165,20 +157,16 @@ h2 {
 }
 
 #connectivity {
+  background: url("media/connectivity-img.jpg");
+  background-size: cover;
   padding-top: 8vh;
   height: 92vh;
-  text-align: center;
-  line-height: normal;
+  background-position: center center;
+  background-repeat: no-repeat;
 }
 
-#connectivity ul li {
-  text-decoration: none;
-  line-height: normal;
-  list-style: none;
-}
-
-#connectivity ul {
-  padding-left: 0;
+#connectivity {
+  font-size: 1.2rem;
 }
 
 #memo-app {
@@ -187,7 +175,7 @@ h2 {
 }
 
 #memo-app p {
-  margin: 2vh 30vw;
+  margin: 2vh 10vw;
   font-size: 1.1rem;
 }
 
@@ -198,15 +186,16 @@ h2 {
 
 #memo-app ul li {
   display: inline-flex;
-  width: 20vw;
+  width: 30vw;
 }
 
 #memo-app ul li p{
-  margin: 0;
+  margin: auto;
+  text-align: center;
 }
 
 .app-img {
-  width: 12vw;
+  width: 13vw;
   height: 24vw;
 }
 
@@ -229,14 +218,8 @@ img {
   margin: 0;
 }
 
-.left-half {
+.left-float {
   float: left;
-  width: 45vw;
-}
-
-.right-half {
-  float: right;
-  width: 45vw;
 }
 
 .container {
@@ -265,7 +248,7 @@ input[type=checkbox]:checked ~ #navbar{
   z-index: 9999;
 }
 
-@media only screen and (max-width: 1300px){
+@media only screen and (max-width: 1400px){
 
   .header-logo {
     position: absolute;
@@ -304,6 +287,14 @@ input[type=checkbox]:checked ~ #navbar{
     height: 8vh;
   }
 
+  .home h1 {
+    font-size: 1.4rem;
+  }
+
+  .home h3 {
+    font-size: 0.8rem;
+  }
+
   #navbar {
     margin-top: 8vh;
     position: fixed;
@@ -339,6 +330,10 @@ input[type=checkbox]:checked ~ #navbar{
     height: auto;
   }
 
+  #meet-memo p {
+    margin: 5vh 5vw;
+  }
+
   .img-container{
     width: 100%;
     overflow-x: hidden;
@@ -355,9 +350,28 @@ input[type=checkbox]:checked ~ #navbar{
     background-size: cover;
   }
 
+  #features {
+    background-position: left;
+    height: auto;
+    padding-top: 0;
+  }
+
+  #features p {
+    padding-right: 5vw;
+  }
+
   #connectivity {
+    background-image: none;
     padding-top: 0px;
     height: auto;
+  }
+
+  #connectivity p {
+    margin: 5vh 5vw;
+  }
+
+  .connectivityImg{
+    transform: translate( -10%, 0);
   }
 
   h2 {
@@ -369,14 +383,37 @@ input[type=checkbox]:checked ~ #navbar{
     height: auto;
   }
 
-  #features {
-    background-position: left;
-    height: auto;
+  #memo-app p {
+    margin: 5vh 5vw;
+  }
+
+  #memo-app ul li {
+    padding-right: 5vw;
+    display: block;
+    width: auto;
+  }
+
+  #memo-app ul {
+    list-style: circle;
+    padding-left: auto;
+  }
+
+  .app-img {
+    width: 50vw;
+    height: 50vh;
   }
 
   #local-authorities {
     padding-top: 0;
     height: auto;
+  }
+
+  #local-authorities p {
+    margin: 5vh 5vw;
+  }
+
+  #local-authorities li {
+    padding-right: 5vw;
   }
 
   #contact {

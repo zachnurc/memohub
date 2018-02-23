@@ -9,6 +9,7 @@ import setupPhone from './media/Setup phone.png';
 import settingsPhone from './media/Settings Phone.png';
 import reassurancePhone from './media/Reassurance Phone.png';
 import dashboard from './media/Dashboard in screen.png';
+import connectivityImg from './media/connectivity-img.jpg';
 import './App.css';
 
 //navbar lenth fixed
@@ -155,8 +156,14 @@ class App extends Component {
                 </div>
                 <p>
                   Memo is a digital assisted living platform.
-                  With the potential to connect to virtually any IoT sensor,
-                  meaning that as your needs evolve, so does memo.
+                  Memo allows individuals to stay independent, families to be
+                  kept reassured and local authorities provided with actionable
+                  data.
+                </p>
+                <p>
+                  The Memo hub has the potential to connect to virtually any
+                  wireless product, from speakers to door sensors, meaning
+                  that as your needs evolve; so does Memo.
                 </p>
                 <div className="img-container">
                   <img src={packageContents} alt="Package Contents" className="package-img"/>
@@ -192,36 +199,20 @@ class App extends Component {
                 <div className="pageBorder">
                   <h2>What can Memo connect to?</h2>
                 </div>
-                <p>We are launching Memo with our own sensors:</p>
-                <ul>
-                  <li>Panic button</li>
-                  <li>Smoke detector</li>
-                  <li>Motion detector</li>
-                  <li>Temperature sensor</li>
-                  <li>Door sensor</li>
-                  <li>Smart plug</li>
-                </ul>
-                <p>Coming Soon: <br></br>
-                Compatability with any Z-wave, Zigbee or Bluetooth sensor, such as:</p>
-                <ul>
-                  <li>Heart rate monitor</li>
-                  <li>Wireless speaker</li>
-                  <li>Voice alerts</li>
-                  <li>Smart lightbulbs</li>
-                </ul>
-
                 <p>
-                  We have designed Memo to be a platform, allowing it to have the
-                  potetial to connect to any 3rd party Wireless product. <br/>
-                  Why? <br />
+                  Memo is designed to be a platform, allowing it to have the
+                  potential to connect to nearly any 3rd party Wireless product.
+                </p>
+                <p>
+                  Why?
+                </p>
+                <p>
                   Because every family's needs are different, and no single product
-                  can meet those needs.
+                  can meet those needs. But a platform can.
                 </p>
-                <p>
-                  Assistive technology isn't just about panic buttons, it's about
-                  helping individuals stay independent for longer, whether that be via
-                  gentle reminders or just an easier way to listen to music.
-                </p>
+                <div className="img-container">
+                  <img src={connectivityImg} alt={connectivityImg} className="connectivityImg"/>
+                </div>
               </div>
 
               <div id="memo-app">
@@ -235,31 +226,26 @@ class App extends Component {
                 </p>
                 <ul>
                   <li>
-                    <p>Set up the hub with the App.
+                    <p>
+                      Set up the hub with the App.
                     </p>
                   </li>
-                  <li>
-                    <p>Add some useful information such as medication lists and conditions.</p>
-                  </li>
-                  <li>
-                    <p>Decide what you want to be notified about and how.
-                    </p>
-                  </li>
-                  <li>
-                    <p>Be reassured that if an event happens that you want to know about,
-                      you will. Immediately.
-                    </p>
-                  </li>
-                </ul>
-                <ul>
                   <li>
                     <img className="app-img" src={setupPhone} alt={setupPhone} />
                   </li>
                   <li>
-                    <img className="app-img" src={setupPhone} alt={setupPhone} />
+                    <p>
+                      Decide what you want to be notified about and how.
+                    </p>
                   </li>
                   <li>
                     <img className="app-img" src={settingsPhone} alt={settingsPhone} />
+                  </li>
+                  <li>
+                    <p>
+                      Be reassured that if an event happens that you want to know about,
+                      you will. Immediately.
+                    </p>
                   </li>
                   <li>
                     <img className="app-img" src={reassurancePhone} alt={reassurancePhone} />
@@ -271,7 +257,30 @@ class App extends Component {
                 <div className="pageBorder">
                   <h2>Integration with Local Authorities</h2>
                 </div>
+                <p>
+                  The Memo dashboard provides an overview of all connected hubs,
+                  it is configurable and provides actioanble data.
+                  Memo is built using the latest software meaning it has the
+                  potential to work with and integrate with multiple 3rd party
+                  platforms.
+                </p>
                 <img src={dashboard} alt={dashboard} />
+                <div>
+                  <ul>
+                    <li>
+                      Monitor when carers have turned up and compare against carers
+                      schedule.
+                    </li>
+                    <li>
+                      Break down falls and panic events by age, gender, location
+                      or condition.
+                    </li>
+                    <li>
+                      Data comparisons, such as looking at correlations between
+                      activity and falls.
+                    </li>
+                  </ul>
+                </div>
               </div>
 
               <div id="contact">
@@ -350,8 +359,14 @@ class App extends Component {
                 </div>
                 <p>
                   Memo is a digital assisted living platform.
-                  With the potential to connect to virtually any IoT sensor,
-                  meaning that as your needs evolve, so does memo.
+                  Memo allows individuals to stay independent, families to be
+                  kept reassured and local authorities provided with actionable
+                  data.
+                </p>
+                <p>
+                  The Memo hub has the potential to connect to virtually any
+                  wireless product, from speakers to door sensors, meaning
+                  that as your needs evolve; so does Memo.
                 </p>
                 <img src={packageContents} alt="Package Contents" className="package-img"/>
               </div>
@@ -362,7 +377,7 @@ class App extends Component {
                     <img src={pageBorder} className="border-img"/>
                     <h2>What can Memo do?</h2>
                   </div>
-                  <div className="left-half">
+                  <div className="left-float">
                     <p>
                       3G - Can call a family memberor monitoring centre, and connect to the internet.
                     </p>
@@ -387,37 +402,17 @@ class App extends Component {
                   <img src={pageBorder} className="border-img"/>
                   <h2>What can Memo connect to?</h2>
                 </div>
-                <div className="left-half">
-                  <p>We are launching Memo with our own sensors:</p>
-                  <ul>
-                    <li>Panic button</li>
-                    <li>Smoke detector</li>
-                    <li>Motion detector</li>
-                    <li>Temperature sensor</li>
-                    <li>Door sensor</li>
-                    <li>Smart plug</li>
-                  </ul>
-                  <p>Coming Soon: <br></br>
-                  Compatability with any Z-wave, Zigbee or Bluetooth sensor, such as:</p>
-                  <ul>
-                    <li>Heart rate monitor</li>
-                    <li>Wireless speaker</li>
-                    <li>Voice alerts</li>
-                    <li>Smart lightbulbs</li>
-                  </ul>
-                </div>
-                <div className="right-half">
+                <div>
                   <p>
-                    We have designed Memo to be a platform, allowing it to have the
-                    potetial to connect to any 3rd party Wireless product. <br/>
-                    Why? <br />
-                    Because every family's needs are different, and no single product
-                    can meet those needs.
+                    Memo is designed to be a platform, allowing it to have the
+                    potential to connect to nearly any 3rd party Wireless product.
                   </p>
                   <p>
-                    Assistive technology isn't just about panic buttons, it's about
-                    helping individuals stay independent for longer, whether that be via
-                    gentle reminders or just an easier way to listen to music.
+                    Why?
+                  </p>
+                  <p>
+                    Because every family's needs are different, and no single product
+                    can meet those needs. But a platform can.
                   </p>
                 </div>
               </div>
@@ -434,27 +429,6 @@ class App extends Component {
                 </p>
                 <ul>
                   <li>
-                    <p>Set up the hub with the App.
-                    </p>
-                  </li>
-                  <li>
-                    <p>Add some useful information such as medication lists and conditions.</p>
-                  </li>
-                  <li>
-                    <p>Decide what you want to be notified about and how.
-                    </p>
-                  </li>
-                  <li>
-                    <p>Be reassured that if an event happens that you want to know about,
-                      you will. Immediately.
-                    </p>
-                  </li>
-                </ul>
-                <ul>
-                  <li>
-                    <img className="app-img" src={setupPhone} alt={setupPhone} />
-                  </li>
-                  <li>
                     <img className="app-img" src={setupPhone} alt={setupPhone} />
                   </li>
                   <li>
@@ -464,6 +438,24 @@ class App extends Component {
                     <img className="app-img" src={reassurancePhone} alt={reassurancePhone} />
                   </li>
                 </ul>
+                <ul>
+                  <li>
+                    <p>
+                      Set up the hub with the App.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      Decide what you want to be notified about and how.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      Be reassured that if an event happens that you want to know about,
+                      you will. Immediately.
+                    </p>
+                  </li>
+                </ul>
               </div>
 
               <div id="local-authorities">
@@ -471,8 +463,31 @@ class App extends Component {
                   <img src={pageBorder} className="border-img"/>
                   <h2>Integration with Local Authorities</h2>
                 </div>
-                <div className="left-half">
+                <p>
+                  The Memo dashboard provides an overview of all connected hubs,
+                  it is configurable and provides actioanble data.
+                  Memo is built using the latest software meaning it has the
+                  potential to work with and integrate with multiple 3rd party
+                  platforms.
+                </p>
+                <div className="left-float">
                   <img src={dashboard} alt={dashboard} />
+                </div>
+                <div>
+                  <ul>
+                    <li>
+                      Monitor when carers have turned up and compare against carers
+                      schedule.
+                    </li>
+                    <li>
+                      Break down falls and panic events by age, gender, location
+                      or condition.
+                    </li>
+                    <li>
+                      Data comparisons, such as looking at correlations between
+                      activity and falls.
+                    </li>
+                  </ul>
                 </div>
               </div>
 
