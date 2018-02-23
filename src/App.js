@@ -22,42 +22,29 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      scrollLocation: 0,
-      pages: []
+      scrollLocation: 0
     };
   }
 
   handleKeyPress(keycode){
 
     if(keycode === 40 || keycode === 34){
-      this.handleScroll('down', '');
+      this.handleScroll('down');
     }
     else if(keycode === 38 || keycode === 33){
-      this.handleScroll('up', '');
+      this.handleScroll('up');
     }
   }
 
   //instead of scrolling load page with relevant #link
 
-  handleScroll(direction, id){
+  handleScroll(direction){
 
     if(direction === 'down'){
-      if(this.state.scrollLocation < 6){
-        id = this.state.scrollLocation + 1;
-      } else {
-        id = this.state.scrollLocation;
-      }
+      window.scroll(0, this.state.scrollLocation + window.innerHeight);
     } else if(direction === 'up'){
-      if(this.state.scrollLocation > 0){
-        id = this.state.scrollLocation - 1;
-      } else {
-        id = this.state.scrollLocation;
-      }
+      window.scroll(0, this.state.scrollLocation - window.innerHeight);
     }
-
-    this.setState({scrollLocation : id});
-    console.log(this.state.scrollLocation);
-
   }
 
   componentDidMount() {
@@ -69,13 +56,16 @@ class App extends Component {
       }
     }, false);
 
-    // window.addEventListener("scroll", (event) => {
-    //   if (window.scrollY > this.state.scrollLocation){
-    //     this.handleScroll('down');
-    //   }else if(window.scrollY < this.state.scrollLocation){
-    //     this.handleScroll('up');
-    //   }
-    // }, false);
+    window.addEventListener("scroll", (event) => {
+      if (window.scrollY > this.state.scrollLocation){
+        this.handleScroll('down');
+        this.setState({ scrollLocation : window.scrollY});
+      }else if(window.scrollY < this.state.scrollLocation){
+        this.handleScroll('up');
+        this.setState({ scrollLocation : window.scrollY});
+      }
+      console.log(this.state.scrollLocation);
+    }, false);
   }
 
   render() {
@@ -117,22 +107,22 @@ class App extends Component {
               <div id="navbar" >
                 <ul>
                   <li>
-                    <a href="#meet-memo" onClick={() => this.setState({scrollLocation: 1})}>Meet Memo</a>
+                    <a href="#meet-memo" onClick={() => this.setState({scrollLocation: window.scrollY})}>Meet Memo</a>
                   </li>
                   <li>
-                    <a href="#features" onClick={() => this.setState({scrollLocation: 2})}>Features</a>
+                    <a href="#features" onClick={() => this.setState({scrollLocation: window.scrollY})}>Features</a>
                   </li>
                   <li>
-                    <a href="#connectivity" onClick={() => this.setState({scrollLocation: 3})}>Connectivity</a>
+                    <a href="#connectivity" onClick={() => this.setState({scrollLocation: window.scrollY})}>Connectivity</a>
                   </li>
                   <li>
-                    <a href="#memo-app" onClick={() => this.setState({scrollLocation: 4})}>Memo App</a>
+                    <a href="#memo-app" onClick={() => this.setState({scrollLocation: window.scrollY})}>Memo App</a>
                   </li>
                   <li>
-                    <a href="#local-authorities" onClick={() => this.setState({scrollLocation: 5})}>Local Authorities</a>
+                    <a href="#local-authorities" onClick={() => this.setState({scrollLocation: window.scrollY})}>Local Authorities</a>
                   </li>
                   <li>
-                    <a href="#contact" onClick={() => this.setState({scrollLocation: 6})}>Contact Us</a>
+                    <a href="#contact" onClick={() => this.setState({scrollLocation: window.scrollY})}>Contact Us</a>
                   </li>
                 </ul>
               </div>
