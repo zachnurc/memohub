@@ -11,8 +11,10 @@ import dashboard from './media/Dashboard in screen.png';
 import connectivityImg from './media/connectivity-img.jpg';
 import './App.css';
 
-//navbar lenth fixed
 //scroll animation and timeout
+//potential of multiple coloured hub image on front page instead of just one
+//one on mobile and small screens, more on bigger screens
+
 
 class App extends Component {
 
@@ -46,50 +48,49 @@ class App extends Component {
   }
 
   handleWindowSizeChange = () => {
-    console.log(window.innerWidth);
-  this.setState({ width: window.innerWidth });
+    this.setState({ width: window.innerWidth });
 
-  if(window.innerWidth <= 480 || window.innerHeight <= 480){
-    window.removeEventListener("keydown", (e) => {
-      // space, page up, page down and arrow keys:
-      if([32, 33, 34, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
-        e.preventDefault();
-        this.handleKeyPress(e.keyCode);
-      }
-    }, false);
+    if(window.innerWidth <= 480 || window.innerHeight <= 480){
+      window.removeEventListener("keydown", (e) => {
+        // space, page up, page down and arrow keys:
+        if([32, 33, 34, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
+          e.preventDefault();
+          this.handleKeyPress(e.keyCode);
+        }
+      }, false);
 
-    window.removeEventListener("scroll", (event) => {
-      if (window.scrollY > this.state.scrollLocation){
-        this.handleScroll('down');
-        this.setState({ scrollLocation : window.scrollY});
-      }else if(window.scrollY < this.state.scrollLocation){
-        this.handleScroll('up');
-        this.setState({ scrollLocation : window.scrollY});
-      }
-      console.log(this.state.scrollLocation);
-    }, false);
-  }
+      window.removeEventListener("scroll", (event) => {
+        if (window.scrollY > this.state.scrollLocation){
+          this.handleScroll('down');
+          this.setState({ scrollLocation : window.scrollY});
+        }else if(window.scrollY < this.state.scrollLocation){
+          this.handleScroll('up');
+          this.setState({ scrollLocation : window.scrollY});
+        }
+        console.log(this.state.scrollLocation);
+      }, false);
+    }
 
-  if(window.innerWidth > 480 && window.innerHeight > 480){
-    window.addEventListener("keydown", (e) => {
-      // space, page up, page down and arrow keys:
-      if([32, 33, 34, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
-        e.preventDefault();
-        this.handleKeyPress(e.keyCode);
-      }
-    }, false);
+    if(window.innerWidth > 480 && window.innerHeight > 480){
+      window.addEventListener("keydown", (e) => {
+        // space, page up, page down and arrow keys:
+        if([32, 33, 34, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
+          e.preventDefault();
+          this.handleKeyPress(e.keyCode);
+        }
+      }, false);
 
-    window.addEventListener("scroll", (event) => {
-      if (window.scrollY > this.state.scrollLocation){
-        this.handleScroll('down');
-        this.setState({ scrollLocation : window.scrollY});
-      }else if(window.scrollY < this.state.scrollLocation){
-        this.handleScroll('up');
-        this.setState({ scrollLocation : window.scrollY});
-      }
-      console.log(this.state.scrollLocation);
-    }, false);
-  }
+      window.addEventListener("scroll", (event) => {
+        if (window.scrollY > this.state.scrollLocation){
+          this.handleScroll('down');
+          this.setState({ scrollLocation : window.scrollY});
+        }else if(window.scrollY < this.state.scrollLocation){
+          this.handleScroll('up');
+          this.setState({ scrollLocation : window.scrollY});
+        }
+        console.log(this.state.scrollLocation);
+      }, false);
+    }
   };
 
   componentDidMount() {
