@@ -59,9 +59,9 @@ header {
   z-index: 10;
 }
 
-::-webkit-scrollbar {
+/*::-webkit-scrollbar {
     display: none;
-}
+}*/
 
 .home h1{
   font-size: 1.6rem;
@@ -114,11 +114,24 @@ h2 {
 }
 
 #meet-memo {
-  border-right: 0;
-  border-bottom: 0;
-  border-left: 0;
-  padding-top: 8vh;
   height: 92vh;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+#meet-memo:before {
+  background: url("media/packaging-contents.jpg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  transform: translate(0, 20%);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  content: "";
+  z-index: -1;
 }
 
 #meet-memo p {
@@ -133,41 +146,32 @@ h2 {
 #features {
   background: url("media/features.png");
   background-size: cover;
-  padding-top: 8vh;
   height: 92vh;
-  background-position: center 100;
+  background-position: center center;
   background-repeat: no-repeat;
-}
-
-.background-image {
-  position: absolute;
-  height: 92vh;
 }
 
 .features-container {
   height: 92vh;
   text-align: left;
-  z-index: -1;
   position: flex;
 }
 
 .features-container p {
   padding-left: 5vw;
-  margin: 1rem 0;
+  font-size: 1.1rem;
 }
 
 #connectivity {
   background: url("media/connectivity-img.jpg");
   background-size: cover;
-  padding-top: 8vh;
   height: 92vh;
   background-position: center center;
   background-repeat: no-repeat;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
 }
 
 #memo-app {
-  padding-top: 8vh;
   height: 92vh;
 }
 
@@ -197,19 +201,19 @@ h2 {
 }
 
 #local-authorities {
-  padding-top: 8vh;
   height: 92vh;
 }
 
 #local-authorities p {
   margin: 5vh 10vw;
-  margin-bottom: 10vh;
   font-size: 1.2rem;
 }
 
 #local-authorities ul {
-  padding-left: 50%;
+  padding-left: 60%;
   list-style: unset;
+  text-align: left;
+  margin: 15vh auto;
 }
 
 #local-authorities ul li {
@@ -219,7 +223,7 @@ h2 {
 }
 
 .dashboard-img {
-  width: 50vw;
+  width: 60vw;
   margin: auto;
 }
 
@@ -229,7 +233,6 @@ img {
 }
 
 #contact {
-  padding-top: 8vh;
   height: 92vh;
 }
 
@@ -268,17 +271,120 @@ input[type=checkbox]:checked ~ #navbar{
 
 @media only screen and (max-width: 1400px){
 
-  .header-logo {
-    position: absolute;
+  #navbar {
+    margin-top: 8vh;
+    position: fixed;
+    display: none;
     left: 0;
-    padding-left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    height: 8vh;
+    width: 25vw;
+    background-color: white;
+  }
+
+  #navbar li:after {
+    content: "";
+  }
+
+  #navbar ul {
+    margin: 0;
+    padding-left: 0;
+  }
+
+  #navbar ul li {
+    margin-bottom: 1px;
+    float: none;
+    display: block;
+  }
+
+  .show-menu {
+    padding-left: 5vw;
+    margin: auto 0;
+    display: block;
   }
 
   #features {
       background-position: left;
+  }
+
+  img {
+    height: 50vh;
+  }
+
+  #meet-memo:before {
+      transform: translate(0, 30%);
+  }
+
+}
+
+@media only screen and (max-width: 1024px){
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  .pageBorder {
+    background-image: url("media/mobile-page-border.png");
+    height: 8vh;
+    background-position: center center;
+    background-size: cover;
+  }
+
+  #meet-memo {
+    padding-top: 0;
+  }
+
+  #meet-memo p {
+    font-size: 1.2rem;
+  }
+
+  #features {
+    padding-top: 0;
+  }
+
+  #connectivity {
+    padding-top: 0px;
+  }
+
+  #memo-app {
+    padding-top: 0;
+    height: auto;
+  }
+
+  #local-authorities {
+    padding-top: 0;
+  }
+
+  #local-authorities p {
+    margin: 0 5vw;
+  }
+
+  #local-authorities ul {
+    padding-left: 10vw;
+    margin: auto;
+  }
+
+  #local-authorities ul li {
+    padding-right: 5vw;
+    font-size: 1.2rem;
+  }
+
+  #contact {
+    padding-left: 0;
+  }
+
+  img {
+    height: 40vh;
+  }
+
+  #meet-memo:before {
+      transform: translate(0, 40%);
+  }
+
+}
+
+@media only screen and (max-width: 720px){
+
+  #meet-memo:before {
+      transform: translate(0, 50%);
   }
 
 }
@@ -332,8 +438,13 @@ input[type=checkbox]:checked ~ #navbar{
   }
 
   #meet-memo {
+    background: none;
     padding-top: 0;
     height: auto;
+  }
+
+  #meet-memo:before {
+    background: none;
   }
 
   #meet-memo p {
@@ -442,6 +553,10 @@ input[type=checkbox]:checked ~ #navbar{
 
 @media only screen and (max-width: 480px) {
 
+  h2 {
+    font-size: 1.2rem;
+  }
+
   .mobile-header-logo {
     position: absolute;
     left: 50%;
@@ -458,39 +573,13 @@ input[type=checkbox]:checked ~ #navbar{
     font-size: 0.8rem;
   }
 
-  #navbar {
-    margin-top: 8vh;
-    position: fixed;
-    display: none;
-    left: 0;
-    width: 25vw;
-    background-color: white;
-  }
-
-  #navbar li:after {
-    content: "";
-  }
-
-  #navbar ul {
-    margin: 0;
-    padding-left: 0;
-  }
-
-  #navbar ul li {
-    margin-bottom: 1px;
-    float: none;
-    display: block;
-  }
-
-  .show-menu {
-    padding-left: 5vw;
-    margin: auto 0;
-    display: block;
-  }
-
   #meet-memo {
     padding-top: 0;
     height: auto;
+  }
+
+  #meet-memo:before {
+    background: none;
   }
 
   #meet-memo p {
@@ -511,6 +600,10 @@ input[type=checkbox]:checked ~ #navbar{
     height: 8vh;
     background-position: center center;
     background-size: cover;
+  }
+
+  img {
+    height: 40vh;
   }
 
   .features-container {
