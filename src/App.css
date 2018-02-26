@@ -135,7 +135,7 @@ h2 {
   background-size: cover;
   padding-top: 8vh;
   height: 92vh;
-  background-position: center center;
+  background-position: center 100;
   background-repeat: no-repeat;
 }
 
@@ -163,9 +163,6 @@ h2 {
   height: 92vh;
   background-position: center center;
   background-repeat: no-repeat;
-}
-
-#connectivity {
   font-size: 1.2rem;
 }
 
@@ -202,6 +199,28 @@ h2 {
 #local-authorities {
   padding-top: 8vh;
   height: 92vh;
+}
+
+#local-authorities p {
+  margin: 5vh 10vw;
+  margin-bottom: 10vh;
+  font-size: 1.2rem;
+}
+
+#local-authorities ul {
+  padding-left: 50%;
+  list-style: unset;
+}
+
+#local-authorities ul li {
+  margin: auto;
+  margin-bottom: 3vh;
+  font-size: 1.1rem;
+}
+
+.dashboard-img {
+  width: 50vw;
+  margin: auto;
 }
 
 img {
@@ -324,23 +343,30 @@ input[type=checkbox]:checked ~ #navbar{
   .img-container{
     width: 100%;
     overflow-x: hidden;
+    display: flex;
   }
 
-  .package-img {
-    transform: translate(-21%, 0);
+  .img-container p {
+    width: 40%;
+    margin: auto !important;
   }
 
   .pageBorder {
     background-image: url("media/mobile-page-border.png");
-    height: 8vh;
+    height: 12vh;
     background-position: center center;
     background-size: cover;
   }
 
   #features {
-    background-position: left;
+    background: none;
     height: auto;
     padding-top: 0;
+  }
+
+  .features-container{
+    height: auto;
+    text-align: center;
   }
 
   #features p {
@@ -377,17 +403,18 @@ input[type=checkbox]:checked ~ #navbar{
   #memo-app ul li {
     padding-right: 5vw;
     display: block;
-    width: auto;
+    margin: auto;
+    width: 50vw;
   }
 
   #memo-app ul {
-    list-style: circle;
+    list-style: unset;
     padding-left: auto;
   }
 
   .app-img {
-    width: 50vw;
-    height: 50vh;
+    width: 50vh;
+    height: 50vw;
   }
 
   #local-authorities {
@@ -403,8 +430,12 @@ input[type=checkbox]:checked ~ #navbar{
     padding-right: 5vw;
   }
 
-  #contact {
-    padding-left: 0;
+  #local-authorities ul {
+    padding-left: 10vw;
+  }
+
+  .footer {
+    height: auto;
   }
 
 }
@@ -482,8 +513,13 @@ input[type=checkbox]:checked ~ #navbar{
     background-size: cover;
   }
 
+  .features-container {
+    height: auto;
+    text-align: center;
+  }
+
   #features {
-    background-position: left;
+    background: none;
     height: auto;
     padding-top: 0;
   }
@@ -544,12 +580,28 @@ input[type=checkbox]:checked ~ #navbar{
     margin: 5vh 5vw;
   }
 
+  #local-authorities ul {
+    padding-left: 10vw;
+  }
+
   #local-authorities li {
     padding-right: 5vw;
   }
 
   #contact {
     padding-left: 0;
+  }
+
+  .footer {
+    height: auto;
+  }
+
+}
+
+@media only screen and (max-width: 350px) {
+
+  .pageBorder h2 {
+    font-size: 1.2rem;
   }
 
 }

@@ -9,6 +9,12 @@ import settingsPhone from './media/Settings Phone.png';
 import reassurancePhone from './media/Reassurance Phone.png';
 import dashboard from './media/Dashboard in screen.png';
 import connectivityImg from './media/connectivity-img.jpg';
+import whiteHub from './media/white-hub.jpg';
+import blackHub from './media/black-hub.png';
+import smokeAlarm from './media/smoke-alarm.png';
+import windowSensor from './media/window-sensor.png';
+import motionSensor from './media/motion-sensor.png';
+import smartPlug from './media/smart-plug.png';
 import './App.css';
 
 //scroll animation and timeout
@@ -122,12 +128,12 @@ class App extends Component {
 
     const { width } = this.state;
     const { scrollLocation } = this.state;
-    const isMobile = window.innerWidth <= 480;
+    var isMobile = window.innerWidth <= 480;
 
     if (window.innerWidth <= 480) {
-      const isMobile = window.innerWidth <= 480;
+      isMobile = true;
     } else if (window.innerHeight <= 480){
-      const isMobile = window.innerHeight <= 480;
+      isMobile = true;
     }
 
     if (isMobile){
@@ -205,23 +211,21 @@ class App extends Component {
                   <div className="pageBorder">
                     <h2>What can Memo do?</h2>
                   </div>
-                  <div>
-                    <p>
-                      3G - Can call a family memberor monitoring centre, and connect to the internet.
-                    </p>
-                    <p>
-                      Multi protocol - If it's wireless we should be able to connect to it.
-                    </p>
-                    <p>
-                      Memo app - keeps family updated and reassured.
-                    </p>
-                    <p>
-                      Carer logging - via a key fob, carers can touch in and out, giving reassurance they have arrived.
-                    </p>
-                    <p>
-                      Works out of the box - just 3 mins setup via the Memo app.
-                    </p>
-                  </div>
+                  <p>
+                    3G - Can call a family memberor monitoring centre, and connect to the internet.
+                  </p>
+                  <p>
+                    Multi protocol - If it's wireless we should be able to connect to it.
+                  </p>
+                  <p>
+                    Memo app - keeps family updated and reassured.
+                  </p>
+                  <p>
+                    Carer logging - via a key fob, carers can touch in and out, giving reassurance they have arrived.
+                  </p>
+                  <p>
+                    Works out of the box - just 3 mins setup via the Memo app.
+                  </p>
                 </div>
               </div>
 
@@ -240,9 +244,26 @@ class App extends Component {
                   Because every family's needs are different, and no single product
                   can meet those needs. But a platform can.
                 </p>
-                <div className="img-container">
-                  <img src={connectivityImg} alt={connectivityImg} className="connectivityImg"/>
-                </div>
+                {/* <div className="img-container">
+                  <img src={whiteHub} alt={whiteHub}/>
+                  <p>Hub</p>
+                  </div>
+                  <div className="img-container">
+                  <img src={motionSensor} alt={motionSensor}/>
+                  <p>Motion Sensor</p>
+                  </div>
+                  <div className="img-container">
+                  <img src={smokeAlarm} alt={smokeAlarm}/>
+                  <p>Smoke Alarm</p>
+                  </div>
+                  <div className="img-container">
+                  <img src={smartPlug} alt={smartPlug}/>
+                  <p>Smart Plug</p>
+                  </div>
+                  <div className="img-container">
+                  <img src={windowSensor} alt={windowSensor}/>
+                  <p>Window Sensor</p>
+                </div> */}
               </div>
 
               <div id="memo-app">
@@ -372,7 +393,6 @@ class App extends Component {
                 </li>
               </ul>
             </div>
-
           </header>
           <div id="main">
             <div id="container">
@@ -503,7 +523,7 @@ class App extends Component {
                   potential to work with and integrate with multiple 3rd party
                   platforms.
                 </p>
-                <div className="left-float">
+                <div className="left-float dashboard-img">
                   <img src={dashboard} alt={dashboard} />
                 </div>
                 <div>
