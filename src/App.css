@@ -32,6 +32,11 @@ body {
 #navbar {
   position: fixed;
   right: 2vw;
+  margin: 2vh auto;
+}
+
+#navbar ul {
+  margin: auto;
 }
 
 #navbar ul li{
@@ -233,11 +238,66 @@ img {
 }
 
 #contact {
-  height: 92vh;
+  height: auto;
 }
 
 #contact h3 {
   margin: 0;
+}
+
+#contact textarea {
+  padding: 9px;
+  min-height: 20vh;
+}
+
+#contact form {
+  margin: 10vh auto;
+}
+
+.input-box {
+  width: 100%;
+  height: 5vh;
+  border: 1px solid;
+  border-radius: 7px;
+  padding: 3px;
+  padding-left: 15px;
+  margin-bottom: 20px;
+}
+
+.col-small {
+  width: 21vw;
+  padding-left: 2.4vw;
+}
+
+.no-left-padding {
+  padding-left: 0
+}
+
+.col-wide {
+  display: flex;
+  margin: 0 auto;
+  width: 69vw;
+}
+
+.margin-top {
+  margin-top: 40px;
+}
+
+input[type=button] {
+  min-width: 100px;
+  width: 10vw;
+  float: right;
+  text-align: center;
+  padding: 0;
+  transition: all 0.5s;
+  background-color: #019698;
+  border-color: #019698;
+  font-size: 1.1rem;
+}
+
+input[type=button]:hover {
+  background-color: #6cfbfe;
+  border-color: #6cfbfe;
 }
 
 .left-float {
@@ -248,10 +308,27 @@ img {
   height: 77vh;
 }
 
-.footer {
+footer {
   background-color: #222;
   color: white;
-  height: 15vh;
+}
+
+footer a {
+  text-decoration: none;
+  color: white;
+}
+
+footer a:hover {
+  color: #6cfbfe;
+}
+
+footer p {
+  margin: 0 auto;
+}
+
+footer img {
+  margin: auto;
+  height: 10vh;
 }
 
 .show-menu {
@@ -272,6 +349,7 @@ input[type=checkbox]:checked ~ #navbar{
 @media only screen and (max-width: 1400px){
 
   #navbar {
+    margin: 0;
     margin-top: 8vh;
     position: fixed;
     display: none;
@@ -369,6 +447,11 @@ input[type=checkbox]:checked ~ #navbar{
 
   #contact {
     padding-left: 0;
+  }
+
+  input[type=button] {
+    background-color: #6cfbfe;
+    border-color: #6cfbfe;
   }
 
   img {
@@ -528,6 +611,12 @@ input[type=checkbox]:checked ~ #navbar{
     height: 50vw;
   }
 
+  input[type=button]{
+    background-color: #6cfbfe;
+    border-color: #6cfbfe;
+    min-height: 30px;
+  }
+
   #local-authorities {
     padding-top: 0;
     height: auto;
@@ -683,6 +772,19 @@ input[type=checkbox]:checked ~ #navbar{
 
   #contact {
     padding-left: 0;
+  }
+
+  #contact p{
+    margin: auto 5vw;
+  }
+
+  #contact form {
+    margin-top: 5vh;
+  }
+
+  input[type=button]{
+    background-color: #6cfbfe;
+    border-color: #6cfbfe;
   }
 
   .footer {

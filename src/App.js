@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Recaptcha from '../src';
 import FontAwesome from 'react-fontawesome';
 import logo from './media/logo.png';
 import packageContents from './media/packaging-contents.jpg';
@@ -15,6 +16,7 @@ import smokeAlarm from './media/smoke-alarm.png';
 import windowSensor from './media/window-sensor.png';
 import motionSensor from './media/motion-sensor.png';
 import smartPlug from './media/smart-plug.png';
+import TSA from './media/tsa.jpg';
 import './App.css';
 
 //scroll animation and timeout
@@ -29,8 +31,27 @@ class App extends Component {
     this.state = {
       width: window.innerWidth,
       scrollLocation: 0,
-      scrollTriggered: false
+      scrollTriggered: false,
+      email: "",
+      name: "",
+      subject: "",
+      message: "Your Message"
     };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(event){
+    const target = event.target;
+    const value = target.value;
+    const name = target.name;
+
+    this.setState({[name]: value})
+  }
+
+  handleSubmit(event) {
+    console.log(this.state.name, this.state.email, this.state.subject, this.state.message);
+    event.preventDefault();
   }
 
   // handleKeyPress(keycode){
@@ -83,7 +104,7 @@ class App extends Component {
   //
   //   if(window.innerWidth > 1024 && window.innerHeight > 768 || window.innerWidth > 768 && window.innerHeight > 1024){
   //     window.addEventListener("keydown", (e) => {
-  //       // space, page up, page down and arrow keys:
+  //       // space, page up, pafodlge down and arrow keys:
   //       if([32, 33, 34, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
   //         e.preventDefault();
   //         this.handleKeyPress(e.keyCode);
@@ -128,10 +149,33 @@ class App extends Component {
   //   }
   // }
 
+//   // site key
+//   const sitekey = 'xxxxxxx';
+//
+// // specifying your onload callback function
+//   const callback = () => {
+//     console.log('Done!!!!');
+//   };
+//
+//   const verifyCallback = (response) => {
+//     console.log(response);
+//   };
+//
+// const expiredCallback = () => {
+//   console.log(`Recaptcha expired`);
+//   };
+//
+// // define a variable to store the recaptcha instance
+//   let recaptchaInstance;
+//
+// // handle reset
+//   const resetRecaptcha = () => {
+//     recaptchaInstance.reset();
+//   };
+
   render() {
 
-    const { width } = this.state;
-    const { scrollLocation } = this.state;
+    // const { scrollLocation } = this.state;
     var isMobile = window.innerWidth <= 480;
     var isTablet = false;
 
@@ -150,6 +194,7 @@ class App extends Component {
         <div className="App">
           <meta name="viewport" content="width=device-width, initial-scale=1"/>
           <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" />
+          <script src="https://www.google.com/recaptcha/api.js" async defer></script>
           <header>
             <a href="#home" onClick={() => this.setState({scrollLocation: 0})}>
               <img className="header-logo" src={logo} alt={logo} />
@@ -344,20 +389,84 @@ class App extends Component {
               </div>
 
               <div id="contact">
-                <div className="container">
-                  <div className="pageBorder">
-                    <h2>Contact</h2>
-                  </div>
-                  <div>
-                    <form />
-                  </div>
+                <div className="pageBorder">
+                  <h2>Contact</h2>
                 </div>
-                <footer className="footer">
-                  <img className="footer-logo" src={logo} alt={logo} />
-                  <h3>Copyright Memohub 2018</h3>
-                </footer>
-
+                <p>If you have any questions please get in touch by filling in the form below or emailing info@alcuris.co.uk.</p>
+                <div>
+                  <form>
+                    <div className="col-wide">
+                      <input
+                        className="input-box"
+                        name="name"
+                        type="text"
+                        placeholder="Your Name"
+                        value={this.state.myName}
+                        onChange={this.handleChange}
+                      />
+                    </div>
+                    <div className="col-wide">
+                      <input
+                        className="input-box"
+                        name="email"
+                        type="email"
+                        placeholder="Your Email"
+                        value={this.state.email}
+                        onChange={this.handleChange}
+                      />
+                    </div>
+                    <div className="col-wide">
+                      <input
+                        className="input-box"
+                        name="subject"
+                        type="text"
+                        placeholder="Subject"
+                        value={this.state.subject}
+                        onChange={this.handleChange}
+                      />
+                    </div>
+                    <div className="col-wide">
+                      <textarea
+                        className="input-box"
+                        name="message"
+                        value={this.state.message}
+                        onChange={this.handleChange}
+                      />
+                    </div>
+                    <div className="col-wide margin-top">
+                      <div id="recaptcha" className="col-small no-left-padding">
+                        {/* <Recaptcha
+                          ref={e => recaptchaInstance = e}
+                          sitekey={sitekey}
+                          size="compact"
+                          render="explicit"
+                          verifyCallback={verifyCallback}
+                          onloadCallback={callback}
+                          expiredCallback={expiredCallback}
+                        /> */}
+                      </div>
+                      <div className="col-small" />
+                      <div className="col-small">
+                        <input
+                          className="input-box"
+                          type="button"
+                          value="Send"
+                          onClick={this.handleSubmit}
+                        />
+                      </div>
+                    </div>
+                  </form>
+                </div>
               </div>
+
+              <footer>
+                <p><a href="www.alcuris.co.uk">Memo is an Alcuris brand</a></p>
+                <p><a href="http://www.alcuris.co.uk/terms-and-conditions/">Privacy Notice</a></p>
+                <div>
+                  <img src={TSA} alt={TSA}/>
+                </div>
+                <p>Copyright 2018</p>
+              </footer>
             </div>
           </div>
         </div>
@@ -366,6 +475,7 @@ class App extends Component {
       return(
         <div className="App">
           <meta name="viewport" content="width=device-width, initial-scale=1"/>
+          <script src="https://www.google.com/recaptcha/api.js" async defer></script>
           <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" />
           <header>
             <a href="#home" onClick={() => this.setState({scrollLocation: 0})}>
@@ -544,19 +654,84 @@ class App extends Component {
               </div>
 
               <div id="contact">
-                <div className="container">
-                  <div className="pageBorder">
-                    <h2>Contact</h2>
-                  </div>
-                  <div>
-                    <form />
-                  </div>
+                <div className="pageBorder">
+                  <h2>Contact</h2>
                 </div>
-                <footer className="footer">
-                  <img className="footer-logo" src={logo} alt={logo} />
-                  <h3>Copyright Memohub 2018</h3>
-                </footer>
+                <p>If you have any questions please get in touch by filling in the form below or emailing info@alcuris.co.uk.</p>
+                <div>
+                  <form>
+                    <div className="col-wide">
+                      <input
+                        className="input-box"
+                        name="name"
+                        type="text"
+                        placeholder="Your Name"
+                        value={this.state.myName}
+                        onChange={this.handleChange}
+                      />
+                    </div>
+                    <div className="col-wide">
+                      <input
+                        className="input-box"
+                        name="email"
+                        type="email"
+                        placeholder="Your Email"
+                        value={this.state.email}
+                        onChange={this.handleChange}
+                      />
+                    </div>
+                    <div className="col-wide">
+                      <input
+                        className="input-box"
+                        name="subject"
+                        type="text"
+                        placeholder="Subject"
+                        value={this.state.subject}
+                        onChange={this.handleChange}
+                      />
+                    </div>
+                    <div className="col-wide">
+                      <textarea
+                        className="input-box"
+                        name="message"
+                        value={this.state.message}
+                        onChange={this.handleChange}
+                      />
+                    </div>
+                    <div className="col-wide margin-top">
+                      <div id="recaptcha" className="col-small no-left-padding">
+                        {/* <Recaptcha
+                          ref={e => recaptchaInstance = e}
+                          sitekey={sitekey}
+                          size="compact"
+                          render="explicit"
+                          verifyCallback={verifyCallback}
+                          onloadCallback={callback}
+                          expiredCallback={expiredCallback}
+                        /> */}
+                      </div>
+                      <div className="col-small" />
+                      <div className="col-small">
+                        <input
+                          className="input-box"
+                          type="button"
+                          value="Send"
+                          onClick={this.handleSubmit}
+                        />
+                      </div>
+                    </div>
+                  </form>
+                </div>
               </div>
+
+              <footer>
+                <p><a href="www.alcuris.co.uk">Memo is an Alcuris brand</a></p>
+                <p><a href="http://www.alcuris.co.uk/terms-and-conditions/">Privacy Notice</a></p>
+                <div>
+                  <img src={TSA} alt={TSA}/>
+                </div>
+                <p>Copyright 2018</p>
+              </footer>
             </div>
           </div>
         </div>
@@ -565,13 +740,15 @@ class App extends Component {
       return (
         <div className="App">
           <meta name="viewport" content="width=device-width, initial-scale=1"/>
+          <script src="build/react.js"></script>
+          <script src="https://www.google.com/recaptcha/api.js" async defer></script>
           <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" />
           <header>
             <a href="#home" onClick={() => this.setState({scrollLocation: 0})}>
               <img className="header-logo" src={logo} alt={logo} />
             </a>
 
-            <label for="show-menu" class="show-menu">
+            <label htmlFor="show-menu" className="show-menu">
               <FontAwesome
                 name='fas fa-bars'
                 size='2x'
@@ -613,7 +790,7 @@ class App extends Component {
 
               <div id="meet-memo">
                 <div className="pageBorder">
-                  <img src={pageBorder} className="border-img"/>
+                  <img src={pageBorder} alt={pageBorder} className="border-img"/>
                   <h2>Meet Memo</h2>
                 </div>
                 <p>
@@ -632,7 +809,7 @@ class App extends Component {
               <div id="features">
                 <div className="features-container">
                   <div className="pageBorder">
-                    <img src={pageBorder} className="border-img"/>
+                    <img src={pageBorder} alt={pageBorder} className="border-img"/>
                     <h2>What can Memo do?</h2>
                   </div>
                   <div className="left-float">
@@ -657,7 +834,7 @@ class App extends Component {
 
               <div id="connectivity">
                 <div className="pageBorder">
-                  <img src={pageBorder} className="border-img"/>
+                  <img src={pageBorder} alt={pageBorder} className="border-img"/>
                   <h2>What can Memo connect to?</h2>
                 </div>
                 <div>
@@ -677,7 +854,7 @@ class App extends Component {
 
               <div id="memo-app">
                 <div className="pageBorder">
-                  <img src={pageBorder} className="border-img"/>
+                  <img src={pageBorder} alt={pageBorder} className="border-img"/>
                   <h2>What is the Memo app?</h2>
                 </div>
                 <p>
@@ -718,7 +895,7 @@ class App extends Component {
 
               <div id="local-authorities">
                 <div className="pageBorder">
-                  <img src={pageBorder} className="border-img"/>
+                  <img src={pageBorder} alt={pageBorder} className="border-img"/>
                   <h2>Integration with Local Authorities</h2>
                 </div>
                 <p>
@@ -750,20 +927,86 @@ class App extends Component {
               </div>
 
               <div id="contact">
-                <div className="container">
-                  <div className="pageBorder">
-                    <img src={pageBorder} className="border-img"/>
-                    <h2>Contact</h2>
-                  </div>
-                  <div>
-                    <form />
-                  </div>
+                <div className="pageBorder">
+                  <img src={pageBorder} alt={pageBorder} className="border-img"/>
+                  <h2>Contact</h2>
                 </div>
-                <footer className="footer">
-                  <img className="footer-logo" src={logo} alt={logo} />
-                  <h3>Copyright Memohub 2018</h3>
-                </footer>
+                <p>If you have any questions please get in touch by filling in the form below or emailing info@alcuris.co.uk.</p>
+                <div>
+                  <form>
+                    <div className="col-wide">
+                      <div className="col-small no-left-padding">
+                        <input
+                          className="input-box"
+                          name="name"
+                          type="text"
+                          placeholder="Your Name"
+                          value={this.state.myName}
+                          onChange={this.handleChange}
+                        />
+                      </div>
+                      <div className="col-small">
+                        <input
+                          className="input-box"
+                          name="email"
+                          type="email"
+                          placeholder="Your Email"
+                          value={this.state.email}
+                          onChange={this.handleChange}
+                        />
+                      </div>
+                      <div className="col-small">
+                        <input
+                          className="input-box"
+                          name="subject"
+                          type="text"
+                          placeholder="Subject"
+                          value={this.state.subject}
+                          onChange={this.handleChange}
+                        />
+                      </div>
+                    </div>
+                    <div className="col-wide">
+                      <textarea
+                        className="input-box"
+                        name="message"
+                        value={this.state.message}
+                        onChange={this.handleChange}
+                      />
+                    </div>
+                    <div className="col-wide margin-top">
+                      <div id="recaptcha" className="col-small no-left-padding">
+                        {/* <Recaptcha
+                          ref={e => recaptchaInstance = e}
+                          sitekey={sitekey}
+                          size="compact"
+                          render="explicit"
+                          verifyCallback={verifyCallback}
+                          onloadCallback={callback}
+                          expiredCallback={expiredCallback}
+                        /> */}
+                      </div>
+                      <div className="col-small"></div>
+                      <div className="col-small">
+                        <input
+                          className="input-box"
+                          type="button"
+                          value="Send"
+                          onClick={this.handleSubmit}
+                        />
+                      </div>
+                    </div>
+                  </form>
+                </div>
               </div>
+              <footer>
+                <p><a href="www.alcuris.co.uk">Memo is an Alcuris brand</a></p>
+                <p><a href="http://www.alcuris.co.uk/terms-and-conditions/">Privacy Notice</a></p>
+                <div>
+                  <img src={TSA} alt={TSA}/>
+                </div>
+                <p>Copyright 2018</p>
+              </footer>
             </div>
           </div>
         </div>
