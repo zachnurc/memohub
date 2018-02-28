@@ -262,6 +262,10 @@ img {
   margin-bottom: 20px;
 }
 
+.input-box-error {
+  border-color: red;
+}
+
 .col-small {
   width: 21vw;
   padding-left: 2.4vw;
