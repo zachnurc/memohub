@@ -35,7 +35,8 @@ class App extends Component {
       email: "",
       name: "",
       subject: "",
-      message: "Your Message"
+      message: "Your Message",
+      submission: ""
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -52,6 +53,31 @@ class App extends Component {
   handleSubmit(event) {
     console.log(this.state.name, this.state.email, this.state.subject, this.state.message);
     event.preventDefault();
+    this.setState({submission: "Your email has been sent."})
+  }
+
+  handleWindowSizeChange = () => {
+   this.setState({ width: window.innerWidth });
+  }
+
+  // handleScroll() {
+  //   var scrollPos = window.scrollY();
+  //   $('#navbar a').each(function () {
+  //     var currLink = $(this);
+  //     var refElement = $(currLink.attr("href"));
+  //     if (refElement.position().top <= scrollPos && refElement.position().top + refElement.height() > scrollPos) {
+  //         // $('#menu-center ul li a').removeClass("active");
+  //         // currLink.addClass("active");
+  //       }
+  //       else{
+  //         // currLink.removeClass("active");
+  //       }
+  //   });
+  // }
+
+  componentDidMount() {
+    window.addEventListener('resize', this.handleWindowSizeChange);
+    // window.addEventListener('scroll', this.handleScroll);
   }
 
   // handleKeyPress(keycode){
@@ -77,9 +103,6 @@ class App extends Component {
   //   this.setState ({scrollTriggered: true});
   //
   // }
-  //
-  // handleWindowSizeChange = () => {
-  //   this.setState({ width: window.innerWidth });
   //
   //   if(window.innerWidth <= 1024 || window.innerHeight <= 1024){
   //     window.removeEventListener("keydown", (e) => {
@@ -123,9 +146,6 @@ class App extends Component {
   //     }, false);
   //   }
   // };
-  //
-  // componentDidMount() {
-  //   window.addEventListener('resize', this.handleWindowSizeChange);
   //
   //   if(window.innerWidth > 1024 && window.innerHeight > 768){
   //     window.addEventListener("keydown", (e) => {
@@ -179,6 +199,8 @@ class App extends Component {
     var isMobile = window.innerWidth <= 480;
     var isTablet = false;
 
+    console.log(window.innerWidth);
+
     if (window.innerWidth <= 480) {
       isMobile = true;
     } else if (window.innerHeight <= 480){
@@ -196,7 +218,7 @@ class App extends Component {
           <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" />
           <script src="https://www.google.com/recaptcha/api.js" async defer></script>
           <header>
-            <a href="#home" onClick={() => this.setState({scrollLocation: 0})}>
+            <a href="#home">
               <img className="header-logo" src={logo} alt={logo} />
             </a>
 
@@ -209,26 +231,13 @@ class App extends Component {
             <input type="checkbox" id="show-menu" role="button" />
 
             <div id="navbar" >
-              <ul>
-                <li>
-                  <a href="#meet-memo" onClick={() => this.setState({scrollLocation: window.scrollY})}>Meet Memo</a>
-                </li>
-                <li>
-                  <a href="#features" onClick={() => this.setState({scrollLocation: window.scrollY})}>Features</a>
-                </li>
-                <li>
-                  <a href="#connectivity" onClick={() => this.setState({scrollLocation: window.scrollY})}>Connectivity</a>
-                </li>
-                <li>
-                  <a href="#memo-app" onClick={() => this.setState({scrollLocation: window.scrollY})}>Memo App</a>
-                </li>
-                <li>
-                  <a href="#local-authorities" onClick={() => this.setState({scrollLocation: window.scrollY})}>Local Authorities</a>
-                </li>
-                <li>
-                  <a href="#contact" onClick={() => this.setState({scrollLocation: window.scrollY})}>Contact Us</a>
-                </li>
-              </ul>
+              <a href="#home">HOME</a>
+              <a href="#meet-memo">MEET MEMO</a>
+              <a href="#features">FEATURES</a>
+              <a href="#connectivity">CONNECTIVITY</a>
+              <a href="#memo-app">MEMO APP</a>
+              <a href="#local-authorities">LOCAL AUTHORITIES</a>
+              <a href="#contact">CONTACT US</a>
             </div>
           </header>
           <div id="main">
@@ -433,28 +442,26 @@ class App extends Component {
                         onChange={this.handleChange}
                       />
                     </div>
-                    <div className="col-wide margin-top">
-                      <div id="recaptcha" className="col-small no-left-padding">
-                        {/* <Recaptcha
-                          ref={e => recaptchaInstance = e}
-                          sitekey={sitekey}
-                          size="compact"
-                          render="explicit"
-                          verifyCallback={verifyCallback}
-                          onloadCallback={callback}
-                          expiredCallback={expiredCallback}
-                        /> */}
-                      </div>
-                      <div className="col-small" />
-                      <div className="col-small">
-                        <input
-                          className="input-box"
-                          type="button"
-                          value="Send"
-                          onClick={this.handleSubmit}
-                        />
-                      </div>
+                    <div className="col-wide margin-top display-block">
+                      <input
+                        className="input-box"
+                        type="button"
+                        value="Send"
+                        onClick={this.handleSubmit}
+                      />
+                      <p>{this.state.submission}</p>
                     </div>
+                    {/* <div id="recaptcha" className="col-small no-left-padding">
+                      <Recaptcha
+                        ref={e => recaptchaInstance = e}
+                        sitekey={sitekey}
+                        size="compact"
+                        render="explicit"
+                        verifyCallback={verifyCallback}
+                        onloadCallback={callback}
+                        expiredCallback={expiredCallback}
+                      />
+                    </div> */}
                   </form>
                 </div>
               </div>
@@ -478,7 +485,7 @@ class App extends Component {
           <script src="https://www.google.com/recaptcha/api.js" async defer></script>
           <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" />
           <header>
-            <a href="#home" onClick={() => this.setState({scrollLocation: 0})}>
+            <a href="#home">
               <img className="header-logo" src={logo} alt={logo} />
             </a>
 
@@ -491,26 +498,13 @@ class App extends Component {
             <input type="checkbox" id="show-menu" role="button" />
 
             <div id="navbar" >
-              <ul>
-                <li>
-                  <a href="#meet-memo" onClick={() => this.setState({scrollLocation: window.scrollY})}>Meet Memo</a>
-                </li>
-                <li>
-                  <a href="#features" onClick={() => this.setState({scrollLocation: window.scrollY})}>Features</a>
-                </li>
-                <li>
-                  <a href="#connectivity" onClick={() => this.setState({scrollLocation: window.scrollY})}>Connectivity</a>
-                </li>
-                <li>
-                  <a href="#memo-app" onClick={() => this.setState({scrollLocation: window.scrollY})}>Memo App</a>
-                </li>
-                <li>
-                  <a href="#local-authorities" onClick={() => this.setState({scrollLocation: window.scrollY})}>Local Authorities</a>
-                </li>
-                <li>
-                  <a href="#contact" onClick={() => this.setState({scrollLocation: window.scrollY})}>Contact Us</a>
-                </li>
-              </ul>
+              <a href="#home">HOME</a>
+              <a href="#meet-memo">MEET MEMO</a>
+              <a href="#features">FEATURES</a>
+              <a href="#connectivity">CONNECTIVITY</a>
+              <a href="#memo-app">MEMO APP</a>
+              <a href="#local-authorities">LOCAL AUTHORITIES</a>
+              <a href="#contact">CONTACT US</a>
             </div>
           </header>
           <div id="main">
@@ -710,7 +704,9 @@ class App extends Component {
                           expiredCallback={expiredCallback}
                         /> */}
                       </div>
-                      <div className="col-small" />
+                      <div className="col-small" >
+                        <p>{this.state.submission}</p>
+                      </div>
                       <div className="col-small">
                         <input
                           className="input-box"
@@ -744,7 +740,7 @@ class App extends Component {
           <script src="https://www.google.com/recaptcha/api.js" async defer></script>
           <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" />
           <header>
-            <a href="#home" onClick={() => this.setState({scrollLocation: 0})}>
+            <a href="#home">
               <img className="header-logo" src={logo} alt={logo} />
             </a>
 
@@ -757,26 +753,13 @@ class App extends Component {
             <input type="checkbox" id="show-menu" role="button" />
 
             <div id="navbar" >
-              <ul>
-                <li>
-                  <a href="#meet-memo" onClick={() => this.setState({scrollLocation: window.scrollY})}>Meet Memo</a>
-                </li>
-                <li>
-                  <a href="#features" onClick={() => this.setState({scrollLocation: window.scrollY})}>Features</a>
-                </li>
-                <li>
-                  <a href="#connectivity" onClick={() => this.setState({scrollLocation: window.scrollY})}>Connectivity</a>
-                </li>
-                <li>
-                  <a href="#memo-app" onClick={() => this.setState({scrollLocation: window.scrollY})}>Memo App</a>
-                </li>
-                <li>
-                  <a href="#local-authorities" onClick={() => this.setState({scrollLocation: window.scrollY})}>Local Authorities</a>
-                </li>
-                <li>
-                  <a href="#contact" onClick={() => this.setState({scrollLocation: window.scrollY})}>Contact Us</a>
-                </li>
-              </ul>
+              <a href="#home" className="active">HOME</a>
+              <a href="#meet-memo">MEET MEMO</a>
+              <a href="#features">FEATURES</a>
+              <a href="#connectivity">CONNECTIVITY</a>
+              <a href="#memo-app">MEMO APP</a>
+              <a href="#local-authorities">LOCAL AUTHORITIES</a>
+              <a href="#contact">CONTACT US</a>
             </div>
           </header>
           <div id="main">
@@ -986,7 +969,9 @@ class App extends Component {
                           expiredCallback={expiredCallback}
                         /> */}
                       </div>
-                      <div className="col-small"></div>
+                      <div className="col-small">
+                        <p>{this.state.submission}</p>
+                      </div>
                       <div className="col-small">
                         <input
                           className="input-box"

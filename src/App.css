@@ -21,37 +21,29 @@ body {
   height: 8vh;
 }
 
-#navbar li:after {
-  content: " | ";
-}
-
-#navbar li:last-child:after {
-  content: "";
-}
-
 #navbar {
   position: fixed;
   right: 2vw;
   margin: 2vh auto;
-}
-
-#navbar ul {
-  margin: auto;
-}
-
-#navbar ul li{
-  float: left;
-  display: inline;
+  max-width: 40vw;
 }
 
 #navbar a {
+  display: inline-block;
   text-decoration: none;
+  padding-left: 10px;
   font-size: 0.80rem;
   color: black;
 }
 
 #navbar a:hover {
-  color: #6cfbfe;
+  color: #28b4a9;
+  text-decoration: underline;
+}
+
+#navbar .active {
+  color: #28b4a9;
+  text-decoration: underline;
 }
 
 header {
@@ -149,7 +141,7 @@ h2 {
 }
 
 #features {
-  background: url("media/features.png");
+  background: url("media/features.jpg");
   background-size: cover;
   height: 92vh;
   background-position: center center;
@@ -252,6 +244,12 @@ img {
 
 #contact form {
   margin: 10vh auto;
+  margin-top: 5vh;
+  padding-top: 5vh;
+}
+
+.display-block {
+  display: block !important;
 }
 
 .input-box {
@@ -286,13 +284,13 @@ img {
 input[type=button] {
   min-width: 100px;
   width: 10vw;
-  float: right;
   text-align: center;
   padding: 0;
   transition: all 0.5s;
   background-color: #019698;
   border-color: #019698;
   font-size: 1.1rem;
+  margin: auto;
 }
 
 input[type=button]:hover {
@@ -346,7 +344,7 @@ input[type=checkbox]:checked ~ #navbar{
   z-index: 9999;
 }
 
-@media only screen and (max-width: 1400px){
+@media only screen and (max-width: 1600px){
 
   #navbar {
     margin: 0;
@@ -354,23 +352,17 @@ input[type=checkbox]:checked ~ #navbar{
     position: fixed;
     display: none;
     left: 0;
-    width: 25vw;
     background-color: white;
+    width: auto;
+    max-width: 200px;
   }
 
-  #navbar li:after {
-    content: "";
-  }
-
-  #navbar ul {
+  #navbar a {
+    font-size: 1rem;
     margin: 0;
     padding-left: 0;
-  }
-
-  #navbar ul li {
-    margin-bottom: 1px;
-    float: none;
     display: block;
+    margin-bottom: 1px;
   }
 
   .show-menu {
@@ -416,6 +408,7 @@ input[type=checkbox]:checked ~ #navbar{
 
   #features {
     padding-top: 0;
+    background-position: center;
   }
 
   #connectivity {
@@ -474,14 +467,6 @@ input[type=checkbox]:checked ~ #navbar{
 
 @media only screen and (max-height: 480px) {
 
-  .mobile-header-logo {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    height: 8vh;
-  }
-
   .home h1 {
     font-size: 1.4rem;
   }
@@ -491,7 +476,7 @@ input[type=checkbox]:checked ~ #navbar{
   }
 
   #navbar {
-    margin-top: 8vh;
+    margin-top: 10vh;
     position: fixed;
     display: none;
     left: 0;
@@ -499,19 +484,12 @@ input[type=checkbox]:checked ~ #navbar{
     background-color: white;
   }
 
-  #navbar li:after {
-    content: "";
-  }
-
-  #navbar ul {
+  #navbar a {
+    font-size: 0.8rem;
     margin: 0;
     padding-left: 0;
-  }
-
-  #navbar ul li {
-    margin-bottom: 1px;
-    float: none;
     display: block;
+    margin-bottom: 1px;
   }
 
   .show-menu {
@@ -646,12 +624,8 @@ input[type=checkbox]:checked ~ #navbar{
     font-size: 1.2rem;
   }
 
-  .mobile-header-logo {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    height: 8vh;
+  #navbar a {
+    font-size: 0.8rem;
   }
 
   .home h1 {
@@ -799,4 +773,11 @@ input[type=checkbox]:checked ~ #navbar{
     font-size: 1.2rem;
   }
 
+  .home h1 {
+    font-size: 1.2rem;
+  }
+
+  .home h3 {
+    font-size: 0.7rem;
+  }
 }
