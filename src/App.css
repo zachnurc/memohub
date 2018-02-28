@@ -123,7 +123,7 @@ h2 {
   height: 100vh;
   position: relative;
   z-index: 1;
-
+  overflow: hidden;
 }
 #meet-memo p {
   margin: 2vh 20vw;
@@ -132,13 +132,14 @@ h2 {
 
 .meet-memo-container{
   height:92vh;
+  z-index: 1;
 }
 
 .meet-memo-container:before {
   background: url("media/packaging-contents.jpg");
   background-repeat: no-repeat;
   background-size: contain;
-  background-position: left center;
+  background-position: center center;
   transform: translate(-50%, 10%);
   position: absolute;
   width: 100%;
@@ -162,7 +163,7 @@ h2 {
   background-size: cover;
   height: 92vh;
   text-align: left;
-  position: flex;
+  position: relative;
 }
 
 .features-container p {
