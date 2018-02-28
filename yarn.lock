@@ -4327,10 +4327,6 @@ node-pre-gyp@^0.6.36, node-pre-gyp@^0.6.39:
     tar "^2.2.1"
     tar-pack "^3.4.0"
 
-nodemailer@^4.6.0:
-  version "4.6.0"
-  resolved "https://registry.yarnpkg.com/nodemailer/-/nodemailer-4.6.0.tgz#b99391435aabbd34b74a1283112fbdfd34f7eb8f"
-
 nopt@^4.0.1:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/nopt/-/nopt-4.0.1.tgz#d0d4685afd5415193c8c7505602d0d17cd64474d"
@@ -5212,10 +5208,6 @@ react-fontawesome@^1.6.1:
   resolved "https://registry.yarnpkg.com/react-fontawesome/-/react-fontawesome-1.6.1.tgz#eddce17e7dc731aa09fd4a186688a61793a16c5c"
   dependencies:
     prop-types "^15.5.6"
-
-react-recaptcha@^2.3.7:
-  version "2.3.7"
-  resolved "https://registry.yarnpkg.com/react-recaptcha/-/react-recaptcha-2.3.7.tgz#5a10ea4a7a7f59e6b602d4d385caf73a9bd15043"
 
 react-router-dom@^4.2.2:
   version "4.2.2"
