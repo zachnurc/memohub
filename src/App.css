@@ -5,8 +5,11 @@
   background-color: white;
 }
 
-body {
-  height: 100%;
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
 }
 
 .header-logo {
@@ -22,10 +25,10 @@ body {
 }
 
 #navbar {
-  position: fixed;
   right: 2vw;
   margin: 2vh auto;
   max-width: 40vw;
+  position: fixed;
 }
 
 #navbar a {
@@ -54,11 +57,11 @@ header {
   position: fixed;
   width: 100vw;
   z-index: 10;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
 }
-
-/*::-webkit-scrollbar {
-    display: none;
-}*/
 
 .section:before {
     display: block;
@@ -125,6 +128,7 @@ h2 {
   z-index: 1;
   overflow: hidden;
 }
+
 #meet-memo p {
   margin: 2vh 20vw;
   font-size: 1.1rem;
@@ -302,7 +306,7 @@ img {
   margin-top: 40px;
 }
 
-input[type=button] {
+input[type=Submit] {
   min-width: 100px;
   width: 10vw;
   text-align: center;
@@ -314,7 +318,7 @@ input[type=button] {
   margin: auto;
 }
 
-input[type=button]:hover {
+input[type=Submit]:hover {
   background-color: #6cfbfe;
   border-color: #6cfbfe;
 }
@@ -471,7 +475,7 @@ input[type=checkbox]:checked ~ #navbar{
     padding-left: 0;
   }
 
-  input[type=button] {
+  input[type=Submit] {
     background-color: #6cfbfe;
     border-color: #6cfbfe;
   }
@@ -617,7 +621,7 @@ input[type=checkbox]:checked ~ #navbar{
     height: 50vw;
   }
 
-  input[type=button]{
+  input[type=Submit]{
     background-color: #6cfbfe;
     border-color: #6cfbfe;
     min-height: 30px;
@@ -785,7 +789,7 @@ input[type=checkbox]:checked ~ #navbar{
     margin-top: 5vh;
   }
 
-  input[type=button]{
+  input[type=Submit]{
     background-color: #6cfbfe;
     border-color: #6cfbfe;
   }

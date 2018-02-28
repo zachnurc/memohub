@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Recaptcha from '../src';
+import $ from 'jquery';
 import FontAwesome from 'react-fontawesome';
 import logo from './media/logo.png';
 import packageContents from './media/packaging-contents.jpg';
@@ -19,8 +20,7 @@ import smartPlug from './media/smart-plug.png';
 import TSA from './media/tsa.jpg';
 import './App.css';
 
-//on scroll change address bar
-//animate scroll when a tag clicked jquery example:https://jsfiddle.net/cse_tushar/Dxtyu/141/
+//on scroll change address bar window.location.hash?
 //email form send email
 
 class App extends Component {
@@ -41,8 +41,8 @@ class App extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleScroll = this.handleScroll.bind(this);
     this.resetNavbar = this.resetNavbar.bind(this);
-    this.handleNavigation = this.handleNavigation.bind(this);
     this.resetForm = this.resetForm.bind(this);
+    this.handleFormKeyUp = this.handleFormKeyUp.bind(this);
   }
 
   handleChange(event){
@@ -72,9 +72,38 @@ class App extends Component {
       this.contactMessage.setAttribute("class", "input-box input-box-error");
       this.setState({submission: "Please type a message."});
     } else {
-      this.setState({submission: "Your email has been sent."});
-    }
+      $.ajax({
 
+        type: 'POST',
+        url: './static/php/mailer.php',
+        data: {
+          "form_name": this.state.name,
+          "form_email": this.state.email,
+          "form_message": this.state.message,
+          "form_subject": this.state.subject
+        },
+        cache: false,
+        success: function(data) {
+
+          // Success..
+          this.setState({submission: "Your email has been sent."});
+
+        }.bind(this),
+
+        error: function(xhr, status, err) {
+
+          this.setState({submission: "Sorry, there has been an error.  Please try again later or email info@alcuris.co.uk"});
+
+        }.bind(this)
+
+      });
+    }
+  }
+
+  handleFormKeyUp(event) {
+      if (event.keyCode == 13) {
+        this.handleSubmit(event);
+      }
   }
 
   resetForm(){
@@ -94,53 +123,51 @@ class App extends Component {
     this.navContact.setAttribute("class", "");
   }
 
-  handleNavigation() {}
-
   handleWindowSizeChange = () => {
    this.setState({ width: window.innerWidth });
   }
 
   handleScroll() {
 
-    this.resetNavbar();
-
-    var scrollPos = window.screenY + (this.header.getBoundingClientRect().bottom - this.header.getBoundingClientRect().top);
-
-    if (this.Home.getBoundingClientRect().top <= scrollPos && this.Home.getBoundingClientRect().bottom > scrollPos) {
-
-      this.navHome.setAttribute("class", "active");
-
-    } else if(this.MeetMemo.getBoundingClientRect().top <= scrollPos && this.MeetMemo.getBoundingClientRect().bottom > scrollPos){
-
-      this.navMeetMemo.setAttribute("class", "active");
-
-    } else if(this.Features.getBoundingClientRect().top <= scrollPos && this.Features.getBoundingClientRect().bottom > scrollPos){
-
-      this.navFeatures.setAttribute("class", "active");
-
-    } else if(this.Connectivity.getBoundingClientRect().top <= scrollPos && this.Connectivity.getBoundingClientRect().bottom > scrollPos){
-
-      this.navConnectivity.setAttribute("class", "active");
-
-    } else if(this.MemoApp.getBoundingClientRect().top <= scrollPos && this.MemoApp.getBoundingClientRect().bottom > scrollPos){
-
-      this.navMemoApp.setAttribute("class", "active");
-
-    } else if(this.LocalAuthorities.getBoundingClientRect().top <= scrollPos && this.LocalAuthorities.getBoundingClientRect().bottom > scrollPos){
-
-      this.navLocalAuthorities.setAttribute("class", "active");
-
-    } else if(this.Contact.getBoundingClientRect().top <= scrollPos && this.Contact.getBoundingClientRect().bottom > scrollPos){
-
-      this.navContact.setAttribute("class", "active");
-
-    }
-
+    var scrollPos = $(document).scrollTop();
+    $('#navbar a').each(function () {
+      var currLink = $(this);
+      var refElement = $(currLink.attr("href"));
+      if (refElement.position().top <= scrollPos && refElement.position().top + refElement.height() > scrollPos) {
+        $('#navbar a').removeClass("active");
+        currLink.addClass("active");
+      }
+      else{
+        currLink.removeClass("active");
+      }
+    });
   }
 
   componentDidMount() {
     window.addEventListener('resize', this.handleWindowSizeChange);
     window.addEventListener('scroll', this.handleScroll);
+
+    //smoothscroll
+    $('a[href^="#"]').on('click', function (e) {
+        e.preventDefault();
+        $(document).off("scroll");
+
+        $('a').each(function () {
+            $(this).removeClass('active');
+        })
+        $(this).addClass('active');
+
+        var target = this.hash,
+        location = target;
+        target = $(target);
+        $('html, body').stop().animate({
+            'scrollTop': target.offset().top+2
+        }, 500, 'swing', function () {
+            window.location.hash = location;
+            $(document).on("scroll", this.handleScroll);
+        });
+    });
+
   }
 
   render() {
@@ -350,7 +377,7 @@ class App extends Component {
                 </div>
                 <p>If you have any questions please get in touch by filling in the form below or emailing info@alcuris.co.uk.</p>
                 <div>
-                  <form>
+                  <form onSubmit={this.handleSubmit}>
                     <div className="col-wide">
                       <input
                         ref={(input) => { this.contactName = input; }}
@@ -396,9 +423,8 @@ class App extends Component {
                     <div className="col-wide margin-top display-block">
                       <input
                         className="input-box"
-                        type="button"
+                        type="Submit"
                         value="Send"
-                        onClick={this.handleSubmit}
                       />
                       <p>{this.state.submission}</p>
                     </div>
@@ -608,7 +634,7 @@ class App extends Component {
                 </div>
                 <p>If you have any questions please get in touch by filling in the form below or emailing info@alcuris.co.uk.</p>
                 <div>
-                  <form>
+                  <form onSubmit={this.handleSubmit}>
                     <div className="col-wide">
                       <input
                         ref={(input) => { this.contactName = input; }}
@@ -669,9 +695,8 @@ class App extends Component {
                       <div className="col-small">
                         <input
                           className="input-box"
-                          type="button"
+                          type="Submit"
                           value="Send"
-                          onClick={this.handleSubmit}
                         />
                       </div>
                     </div>
@@ -881,7 +906,7 @@ class App extends Component {
                 </div>
                 <p>If you have any questions please get in touch by filling in the form below or emailing info@alcuris.co.uk.</p>
                 <div>
-                  <form>
+                  <form onSubmit={this.handleSubmit} onKeyUp={this.handleFormKeyUp}>
                     <div className="col-wide">
                       <div className="col-small no-left-padding">
                         <input
@@ -944,9 +969,8 @@ class App extends Component {
                       <div className="col-small">
                         <input
                           className="input-box"
-                          type="button"
+                          type="Submit"
                           value="Send"
-                          onClick={this.handleSubmit}
                         />
                       </div>
                     </div>
