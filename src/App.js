@@ -20,7 +20,8 @@ import TSA from './media/tsa.jpg';
 import './App.css';
 
 //on scroll change address bar
-//on navbar click navigate so border shown
+//animate scroll when a tag clicked jquery example:https://jsfiddle.net/cse_tushar/Dxtyu/141/
+//email form send email
 
 class App extends Component {
 
@@ -40,6 +41,7 @@ class App extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleScroll = this.handleScroll.bind(this);
     this.resetNavbar = this.resetNavbar.bind(this);
+    this.handleNavigation = this.handleNavigation.bind(this);
     this.resetForm = this.resetForm.bind(this);
   }
 
@@ -91,6 +93,8 @@ class App extends Component {
     this.navLocalAuthorities.setAttribute("class", "");
     this.navContact.setAttribute("class", "");
   }
+
+  handleNavigation() {}
 
   handleWindowSizeChange = () => {
    this.setState({ width: window.innerWidth });
@@ -161,7 +165,7 @@ class App extends Component {
           <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" />
           <script src="https://www.google.com/recaptcha/api.js" async defer></script>
           <header ref={(input) => { this.header = input; }}>
-            <a href="#home" onClick={this.handleNavigation}>
+            <a href="#home">
               <img className="header-logo" src={logo} alt={logo} />
             </a>
 
@@ -174,25 +178,25 @@ class App extends Component {
             <input type="checkbox" id="show-menu" role="button" />
 
             <div id="navbar" ref={(input) => { this.navbar = input; }} >
-              <a ref={(input) => { this.navHome = input; }} href="#home" class="active" onClick={this.handleScroll}>HOME</a>
-              <a ref={(input) => { this.navMeetMemo = input; }} href="#meet-memo" class="" onClick={this.handleScroll}>MEET MEMO</a>
-              <a ref={(input) => { this.navFeatures = input; }} href="#features" class="" onClick={this.handleScroll}>FEATURES</a>
-              <a ref={(input) => { this.navConnectivity = input; }} href="#connectivity" class="" onClick={this.handleScroll}>CONNECTIVITY</a>
-              <a ref={(input) => { this.navMemoApp = input; }} href="#memo-app" class="" onClick={this.handleScroll}>MEMO APP</a>
-              <a ref={(input) => { this.navLocalAuthorities = input; }} href="#local-authorities" class="" onClick={this.handleScroll}>LOCAL AUTHORITIES</a>
-              <a ref={(input) => { this.navContact = input; }} href="#contact" class="" onClick={this.handleScroll}>CONTACT US</a>
+              <a ref={(input) => { this.navHome = input; }} href="#home" class="active">HOME</a>
+              <a ref={(input) => { this.navMeetMemo = input; }} href="#meet-memo" class="">MEET MEMO</a>
+              <a ref={(input) => { this.navFeatures = input; }} href="#features" class="">FEATURES</a>
+              <a ref={(input) => { this.navConnectivity = input; }} href="#connectivity" class="">CONNECTIVITY</a>
+              <a ref={(input) => { this.navMemoApp = input; }} href="#memo-app" class="">MEMO APP</a>
+              <a ref={(input) => { this.navLocalAuthorities = input; }} href="#local-authorities" class="">LOCAL AUTHORITIES</a>
+              <a ref={(input) => { this.navContact = input; }} href="#contact" class="">CONTACT US</a>
             </div>
           </header>
           <div id="main">
             <div id="container">
-              <div ref={(input) => { this.Home = input; }} id="home" className="home">
+              <div ref={(input) => { this.Home = input; }} id="home" className="section">
                 <div className="intro">
                   <h1>Yeah. We think it looks good too.</h1>
                   <h3>Reassurance | Independence | Insight</h3>
                 </div>
               </div>
 
-              <div ref={(input) => { this.MeetMemo = input; }} id="meet-memo">
+              <div ref={(input) => { this.MeetMemo = input; }} id="meet-memo" className="section">
                 <div className="pageBorder">
                   <h2>Meet Memo</h2>
                 </div>
@@ -212,7 +216,7 @@ class App extends Component {
                 </div>
               </div>
 
-              <div ref={(input) => { this.Features = input; }} id="features">
+              <div ref={(input) => { this.Features = input; }} id="features" className="section">
                 <div className="features-container">
                   <div className="pageBorder">
                     <h2>What can Memo do?</h2>
@@ -235,7 +239,7 @@ class App extends Component {
                 </div>
               </div>
 
-              <div ref={(input) => { this.Connectivity = input; }} id="connectivity">
+              <div ref={(input) => { this.Connectivity = input; }} id="connectivity" className="section">
                 <div className="pageBorder">
                   <h2>What can Memo connect to?</h2>
                 </div>
@@ -272,7 +276,7 @@ class App extends Component {
                 </div> */}
               </div>
 
-              <div ref={(input) => { this.MemoApp = input; }} id="memo-app">
+              <div ref={(input) => { this.MemoApp = input; }} id="memo-app" className="section">
                 <div className="pageBorder">
                   <h2>What is the Memo app?</h2>
                 </div>
@@ -310,7 +314,7 @@ class App extends Component {
                 </ul>
               </div>
 
-              <div ref={(input) => { this.LocalAuthorities = input; }} id="local-authorities">
+              <div ref={(input) => { this.LocalAuthorities = input; }} id="local-authorities" className="section">
                 <div className="pageBorder">
                   <h2>Integration with Local Authorities</h2>
                 </div>
@@ -340,7 +344,7 @@ class App extends Component {
                 </div>
               </div>
 
-              <div ref={(input) => { this.Contact = input; }} id="contact">
+              <div ref={(input) => { this.Contact = input; }} id="contact" className="section">
                 <div className="pageBorder">
                   <h2>Contact</h2>
                 </div>
@@ -349,6 +353,7 @@ class App extends Component {
                   <form>
                     <div className="col-wide">
                       <input
+                        ref={(input) => { this.contactName = input; }}
                         className="input-box"
                         name="name"
                         type="text"
@@ -359,6 +364,7 @@ class App extends Component {
                     </div>
                     <div className="col-wide">
                       <input
+                        ref={(input) => { this.contactEmail = input; }}
                         className="input-box"
                         name="email"
                         type="email"
@@ -369,6 +375,7 @@ class App extends Component {
                     </div>
                     <div className="col-wide">
                       <input
+                        ref={(input) => { this.contactSubject = input; }}
                         className="input-box"
                         name="subject"
                         type="text"
@@ -379,6 +386,7 @@ class App extends Component {
                     </div>
                     <div className="col-wide">
                       <textarea
+                        ref={(input) => { this.contactMessage = input; }}
                         className="input-box"
                         name="message"
                         value={this.state.message}
@@ -428,7 +436,7 @@ class App extends Component {
           <script src="https://www.google.com/recaptcha/api.js" async defer></script>
           <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" />
           <header ref={(input) => { this.header = input; }}>
-            <a href="#home" onClick={this.handleNavigation}>
+            <a href="#home">
               <img className="header-logo" src={logo} alt={logo} />
             </a>
 
@@ -441,42 +449,44 @@ class App extends Component {
             <input type="checkbox" id="show-menu" role="button" />
 
             <div id="navbar" ref={(input) => { this.navbar = input; }} >
-              <a ref={(input) => { this.navHome = input; }} href="#home" class="active" onClick={this.handleScroll}>HOME</a>
-              <a ref={(input) => { this.navMeetMemo = input; }} href="#meet-memo" class="" onClick={this.handleScroll}>MEET MEMO</a>
-              <a ref={(input) => { this.navFeatures = input; }} href="#features" class="" onClick={this.handleScroll}>FEATURES</a>
-              <a ref={(input) => { this.navConnectivity = input; }} href="#connectivity" class="" onClick={this.handleScroll}>CONNECTIVITY</a>
-              <a ref={(input) => { this.navMemoApp = input; }} href="#memo-app" class="" onClick={this.handleScroll}>MEMO APP</a>
-              <a ref={(input) => { this.navLocalAuthorities = input; }} href="#local-authorities" class="" onClick={this.handleScroll}>LOCAL AUTHORITIES</a>
-              <a ref={(input) => { this.navContact = input; }} href="#contact" class="" onClick={this.handleScroll}>CONTACT US</a>
+              <a ref={(input) => { this.navHome = input; }} href="#home" class="active">HOME</a>
+              <a ref={(input) => { this.navMeetMemo = input; }} href="#meet-memo" class="">MEET MEMO</a>
+              <a ref={(input) => { this.navFeatures = input; }} href="#features" class="">FEATURES</a>
+              <a ref={(input) => { this.navConnectivity = input; }} href="#connectivity" class="">CONNECTIVITY</a>
+              <a ref={(input) => { this.navMemoApp = input; }} href="#memo-app" class="">MEMO APP</a>
+              <a ref={(input) => { this.navLocalAuthorities = input; }} href="#local-authorities" class="">LOCAL AUTHORITIES</a>
+              <a ref={(input) => { this.navContact = input; }} href="#contact" class="">CONTACT US</a>
             </div>
           </header>
           <div id="main">
             <div id="container">
-              <div ref={(input) => { this.Home = input; }} id="home" className="home">
+              <div ref={(input) => { this.Home = input; }} id="home"  className="section">
                 <div className="intro">
                   <h1>Yeah. We think it looks good too.</h1>
                   <h3>Reassurance | Independence | Insight</h3>
                 </div>
               </div>
 
-              <div ref={(input) => { this.MeetMemo = input; }} id="meet-memo">
-                <div className="pageBorder">
-                  <h2>Meet Memo</h2>
+              <div ref={(input) => { this.MeetMemo = input; }} id="meet-memo" className="section">
+                <div className="meet-memo-container">
+                  <div className="pageBorder">
+                    <h2>Meet Memo</h2>
+                  </div>
+                  <p>
+                    Memo is a digital assisted living platform.
+                    Memo allows individuals to stay independent, families to be
+                    kept reassured and local authorities provided with actionable
+                    data.
+                  </p>
+                  <p>
+                    The Memo hub has the potential to connect to virtually any
+                    wireless product, from speakers to door sensors, meaning
+                    that as your needs evolve; so does Memo.
+                  </p>
                 </div>
-                <p>
-                  Memo is a digital assisted living platform.
-                  Memo allows individuals to stay independent, families to be
-                  kept reassured and local authorities provided with actionable
-                  data.
-                </p>
-                <p>
-                  The Memo hub has the potential to connect to virtually any
-                  wireless product, from speakers to door sensors, meaning
-                  that as your needs evolve; so does Memo.
-                </p>
               </div>
 
-              <div ref={(input) => { this.Features = input; }} id="features">
+              <div ref={(input) => { this.Features = input; }} id="features" className="section">
                 <div className="features-container">
                   <div className="pageBorder">
                     <h2>What can Memo do?</h2>
@@ -501,26 +511,28 @@ class App extends Component {
                 </div>
               </div>
 
-              <div ref={(input) => { this.Connectivity = input; }} id="connectivity">
-                <div className="pageBorder">
-                  <h2>What can Memo connect to?</h2>
-                </div>
-                <div>
-                  <p>
-                    Memo is designed to be a platform, allowing it to have the
-                    potential to connect to nearly any 3rd party Wireless product.
-                  </p>
-                  <p>
-                    Why?
-                  </p>
-                  <p>
-                    Because every family's needs are different, and no single product
-                    can meet those needs. But a platform can.
-                  </p>
+              <div ref={(input) => { this.Connectivity = input; }} id="connectivity" className="section">
+                <div className="connectivity-container">
+                  <div className="pageBorder">
+                    <h2>What can Memo connect to?</h2>
+                  </div>
+                  <div>
+                    <p>
+                      Memo is designed to be a platform, allowing it to have the
+                      potential to connect to nearly any 3rd party Wireless product.
+                    </p>
+                    <p>
+                      Why?
+                    </p>
+                    <p>
+                      Because every family's needs are different, and no single product
+                      can meet those needs. But a platform can.
+                    </p>
+                  </div>
                 </div>
               </div>
 
-              <div ref={(input) => { this.MemoApp = input; }} id="memo-app">
+              <div ref={(input) => { this.MemoApp = input; }} id="memo-app" className="section">
                 <div className="pageBorder">
                   <h2>What is the Memo app?</h2>
                 </div>
@@ -560,7 +572,7 @@ class App extends Component {
                 </ul>
               </div>
 
-              <div ref={(input) => { this.LocalAuthorities = input; }} id="local-authorities">
+              <div ref={(input) => { this.LocalAuthorities = input; }} id="local-authorities" className="section">
                 <div className="pageBorder">
                   <h2>Integration with Local Authorities</h2>
                 </div>
@@ -590,7 +602,7 @@ class App extends Component {
                 </div>
               </div>
 
-              <div ref={(input) => { this.Contact = input; }} id="contact">
+              <div ref={(input) => { this.Contact = input; }} id="contact" className="section">
                 <div className="pageBorder">
                   <h2>Contact</h2>
                 </div>
@@ -599,6 +611,7 @@ class App extends Component {
                   <form>
                     <div className="col-wide">
                       <input
+                        ref={(input) => { this.contactName = input; }}
                         className="input-box"
                         name="name"
                         type="text"
@@ -609,6 +622,7 @@ class App extends Component {
                     </div>
                     <div className="col-wide">
                       <input
+                        ref={(input) => { this.contactEmail = input; }}
                         className="input-box"
                         name="email"
                         type="email"
@@ -619,6 +633,7 @@ class App extends Component {
                     </div>
                     <div className="col-wide">
                       <input
+                        ref={(input) => { this.contactSubject = input; }}
                         className="input-box"
                         name="subject"
                         type="text"
@@ -629,6 +644,7 @@ class App extends Component {
                     </div>
                     <div className="col-wide">
                       <textarea
+                        ref={(input) => { this.contactMessage = input; }}
                         className="input-box"
                         name="message"
                         value={this.state.message}
@@ -683,7 +699,7 @@ class App extends Component {
           <script src="https://www.google.com/recaptcha/api.js" async defer></script>
           <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" />
           <header ref={(input) => { this.header = input; }}>
-            <a href="#home" onClick={this.handleNavigation}>
+            <a href="#home">
               <img className="header-logo" src={logo} alt={logo} />
             </a>
 
@@ -696,43 +712,47 @@ class App extends Component {
             <input type="checkbox" id="show-menu" role="button" />
 
             <div id="navbar" ref={(input) => { this.navbar = input; }} >
-              <a ref={(input) => { this.navHome = input; }} href="#home" class="active" onClick={this.handleScroll}>HOME</a>
-              <a ref={(input) => { this.navMeetMemo = input; }} href="#meet-memo" class="" onClick={this.handleScroll}>MEET MEMO</a>
-              <a ref={(input) => { this.navFeatures = input; }} href="#features" class="" onClick={this.handleScroll}>FEATURES</a>
-              <a ref={(input) => { this.navConnectivity = input; }} href="#connectivity" class="" onClick={this.handleScroll}>CONNECTIVITY</a>
-              <a ref={(input) => { this.navMemoApp = input; }} href="#memo-app" class="" onClick={this.handleScroll}>MEMO APP</a>
-              <a ref={(input) => { this.navLocalAuthorities = input; }} href="#local-authorities" class="" onClick={this.handleScroll}>LOCAL AUTHORITIES</a>
-              <a ref={(input) => { this.navContact = input; }} href="#contact" class="" onClick={this.handleScroll}>CONTACT US</a>
+              <a ref={(input) => { this.navHome = input; }} href="#home" className="active">HOME</a>
+              <a ref={(input) => { this.navMeetMemo = input; }} href="#meet-memo" className="">MEET MEMO</a>
+              <a ref={(input) => { this.navFeatures = input; }} href="#features" className="">FEATURES</a>
+              <a ref={(input) => { this.navConnectivity = input; }} href="#connectivity" className="">CONNECTIVITY</a>
+              <a ref={(input) => { this.navMemoApp = input; }} href="#memo-app" className="">MEMO APP</a>
+              <a ref={(input) => { this.navLocalAuthorities = input; }} href="#local-authorities" className="">LOCAL AUTHORITIES</a>
+              <a ref={(input) => { this.navContact = input; }} href="#contact" className="">CONTACT US</a>
             </div>
           </header>
           <div id="main">
             <div id="container">
-              <div ref={(input) => { this.Home = input; }} id="home" className="home">
+              <div ref={(input) => { this.Home = input; }} id="home" className="section">
                 <div className="intro">
                   <h1>Yeah. We think it looks good too.</h1>
                   <h3>Reassurance | Independence | Insight</h3>
                 </div>
               </div>
 
-              <div ref={(input) => { this.MeetMemo = input; }} id="meet-memo">
-                <div className="pageBorder">
-                  <img src={pageBorder} alt={pageBorder} className="border-img"/>
-                  <h2>Meet Memo</h2>
+              <div ref={(input) => { this.MeetMemo = input; }} id="meet-memo" className="section">
+                <div className="meet-memo-container">
+                  <div className="pageBorder">
+                    <img src={pageBorder} alt={pageBorder} className="border-img"/>
+                    <h2>Meet Memo</h2>
+                  </div>
+                  <div>
+                    <p>
+                      Memo is a digital assisted living platform.
+                      Memo allows individuals to stay independent, families to be
+                      kept reassured and local authorities provided with actionable
+                      data.
+                    </p>
+                    <p>
+                      The Memo hub has the potential to connect to virtually any
+                      wireless product, from speakers to door sensors, meaning
+                      that as your needs evolve; so does Memo.
+                    </p>
+                  </div>
                 </div>
-                <p>
-                  Memo is a digital assisted living platform.
-                  Memo allows individuals to stay independent, families to be
-                  kept reassured and local authorities provided with actionable
-                  data.
-                </p>
-                <p>
-                  The Memo hub has the potential to connect to virtually any
-                  wireless product, from speakers to door sensors, meaning
-                  that as your needs evolve; so does Memo.
-                </p>
               </div>
 
-              <div ref={(input) => { this.Features = input; }} id="features">
+              <div ref={(input) => { this.Features = input; }} id="features" className="section">
                 <div className="features-container">
                   <div className="pageBorder">
                     <img src={pageBorder} alt={pageBorder} className="border-img"/>
@@ -758,27 +778,29 @@ class App extends Component {
                 </div>
               </div>
 
-              <div ref={(input) => { this.Connectivity = input; }} id="connectivity">
-                <div className="pageBorder">
-                  <img src={pageBorder} alt={pageBorder} className="border-img"/>
-                  <h2>What can Memo connect to?</h2>
-                </div>
-                <div>
-                  <p>
-                    Memo is designed to be a platform, allowing it to have the
-                    potential to connect to nearly any 3rd party Wireless product.
-                  </p>
-                  <p>
-                    Why?
-                  </p>
-                  <p>
-                    Because every family's needs are different, and no single product
-                    can meet those needs. But a platform can.
-                  </p>
+              <div ref={(input) => { this.Connectivity = input; }} id="connectivity" className="section">
+                <div className="connectivity-container">
+                  <div className="pageBorder">
+                    <img src={pageBorder} alt={pageBorder} className="border-img"/>
+                    <h2>What can Memo connect to?</h2>
+                  </div>
+                  <div>
+                    <p>
+                      Memo is designed to be a platform, allowing it to have the
+                      potential to connect to nearly any 3rd party Wireless product.
+                    </p>
+                    <p>
+                      Why?
+                    </p>
+                    <p>
+                      Because every family's needs are different, and no single product
+                      can meet those needs. But a platform can.
+                    </p>
+                  </div>
                 </div>
               </div>
 
-              <div ref={(input) => { this.MemoApp = input; }} id="memo-app">
+              <div ref={(input) => { this.MemoApp = input; }} id="memo-app" className="section">
                 <div className="pageBorder">
                   <img src={pageBorder} alt={pageBorder} className="border-img"/>
                   <h2>What is the Memo app?</h2>
@@ -819,7 +841,7 @@ class App extends Component {
                 </ul>
               </div>
 
-              <div ref={(input) => { this.LocalAuthorities = input; }} id="local-authorities">
+              <div ref={(input) => { this.LocalAuthorities = input; }} id="local-authorities" className="section">
                 <div className="pageBorder">
                   <img src={pageBorder} alt={pageBorder} className="border-img"/>
                   <h2>Integration with Local Authorities</h2>
@@ -852,7 +874,7 @@ class App extends Component {
                 </div>
               </div>
 
-              <div ref={(input) => { this.Contact = input; }} id="contact">
+              <div ref={(input) => { this.Contact = input; }} id="contact" className="section">
                 <div className="pageBorder">
                   <img src={pageBorder} alt={pageBorder} className="border-img"/>
                   <h2>Contact</h2>

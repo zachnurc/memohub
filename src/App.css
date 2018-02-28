@@ -60,25 +60,34 @@ header {
     display: none;
 }*/
 
-.home h1{
+.section:before {
+    display: block;
+    content: "";
+    height: 8vh;      /* Give height of your fixed element */
+    margin-top: -8vh;
+    visibility: hidden;
+    min-height: 48px;
+}
+
+#home h1{
   font-size: 1.6rem;
   margin: auto;
   padding-top: 5vh;
 }
 
-.home h3 {
+#home h3 {
   margin: auto;
   font-size: 0.9rem;
 }
 
-.home {
+#home {
   background: url("media/home.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   background-color: #181818;
   padding-top: 8vh;
-  height: 92vh;
+  height: 100vh;
 }
 
 .intro {
@@ -111,29 +120,31 @@ h2 {
 }
 
 #meet-memo {
-  height: 92vh;
+  height: 100vh;
   position: relative;
   z-index: 1;
-  overflow: hidden;
-}
 
-#meet-memo:before {
-  background: url("media/packaging-contents.jpg");
-  background-repeat: no-repeat;
-  background-size: contain;
-  transform: translate(0, 20%);
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  content: "";
-  z-index: -1;
 }
-
 #meet-memo p {
   margin: 2vh 20vw;
   font-size: 1.1rem;
+}
+
+.meet-memo-container{
+  height:92vh;
+}
+
+.meet-memo-container:before {
+  background: url("media/packaging-contents.jpg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: left center;
+  transform: translate(-50%, 10%);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  content: "";
+  z-index: -1;
 }
 
 .package-img{
@@ -141,14 +152,14 @@ h2 {
 }
 
 #features {
-  background: url("media/features.jpg");
-  background-size: cover;
-  height: 92vh;
-  background-position: center center;
-  background-repeat: no-repeat;
+  height: 100vh;
 }
 
 .features-container {
+  background-repeat: no-repeat;
+  background: url("media/features.jpg");
+  background-position: center center;
+  background-size: cover;
   height: 92vh;
   text-align: left;
   position: flex;
@@ -160,16 +171,21 @@ h2 {
 }
 
 #connectivity {
+  height: 100vh;
+}
+
+.connectivity-container {
+  font-size: 1.1rem;
+  background-repeat: no-repeat;
   background: url("media/connectivity-img.jpg");
+  background-position: center center;
   background-size: cover;
   height: 92vh;
-  background-position: center center;
-  background-repeat: no-repeat;
-  font-size: 1.1rem;
+  position: flex;
 }
 
 #memo-app {
-  height: 92vh;
+  height: 100vh;
 }
 
 #memo-app p {
@@ -198,7 +214,7 @@ h2 {
 }
 
 #local-authorities {
-  height: 92vh;
+  height: 100vh;
 }
 
 #local-authorities p {
@@ -406,6 +422,10 @@ input[type=checkbox]:checked ~ #navbar{
     padding-top: 0;
   }
 
+  .meet-memo-container {
+    height: 100%;
+  }
+
   #meet-memo p {
     font-size: 1.2rem;
   }
@@ -413,6 +433,10 @@ input[type=checkbox]:checked ~ #navbar{
   #features {
     padding-top: 0;
     background-position: center;
+  }
+
+  .features-container {
+    height: 100%;
   }
 
   #connectivity {
@@ -471,11 +495,11 @@ input[type=checkbox]:checked ~ #navbar{
 
 @media only screen and (max-height: 480px) {
 
-  .home h1 {
+  #home h1 {
     font-size: 1.4rem;
   }
 
-  .home h3 {
+  #home h3 {
     font-size: 0.8rem;
   }
 
@@ -535,12 +559,12 @@ input[type=checkbox]:checked ~ #navbar{
   }
 
   #features {
-    background: none;
     height: auto;
     padding-top: 0;
   }
 
   .features-container{
+    background: none;
     height: auto;
     text-align: center;
   }
@@ -550,17 +574,16 @@ input[type=checkbox]:checked ~ #navbar{
   }
 
   #connectivity {
-    background-image: none;
     padding-top: 0px;
     height: auto;
   }
 
-  #connectivity p {
-    margin: 5vh 5vw;
+  .connectivity-container{
+    background-image: none;
   }
 
-  .connectivityImg{
-    transform: translate( -10%, 0);
+  #connectivity p {
+    margin: 5vh 5vw;
   }
 
   h2 {
@@ -632,11 +655,11 @@ input[type=checkbox]:checked ~ #navbar{
     font-size: 0.8rem;
   }
 
-  .home h1 {
+  #home h1 {
     font-size: 1.4rem;
   }
 
-  .home h3 {
+  #home h3 {
     font-size: 0.8rem;
   }
 
@@ -674,6 +697,7 @@ input[type=checkbox]:checked ~ #navbar{
   }
 
   .features-container {
+    background: none;
     height: auto;
     text-align: center;
   }
@@ -777,11 +801,11 @@ input[type=checkbox]:checked ~ #navbar{
     font-size: 1.2rem;
   }
 
-  .home h1 {
+  #home h1 {
     font-size: 1.2rem;
   }
 
-  .home h3 {
+  #home h3 {
     font-size: 0.7rem;
   }
 }
