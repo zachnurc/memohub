@@ -19,11 +19,6 @@ import smartPlug from './media/smart-plug.png';
 import TSA from './media/tsa.jpg';
 import './App.css';
 
-//scroll animation and timeout
-//potential of multiple coloured hub image on front page instead of just one
-//one on mobile and small screens, more on bigger screens
-
-
 class App extends Component {
 
   constructor(props) {
@@ -40,6 +35,9 @@ class App extends Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleScroll = this.handleScroll.bind(this);
+    this.handleNavigation = this.handleNavigation.bind(this);
+    this.resetNavbar = this.resetNavbar.bind(this);
   }
 
   handleChange(event){
@@ -56,150 +54,76 @@ class App extends Component {
     this.setState({submission: "Your email has been sent."})
   }
 
+  resetNavbar(){
+    this.navHome.setAttribute("class", "");
+    this.navMeetMemo.setAttribute("class", "");
+    this.navFeatures.setAttribute("class", "");
+    this.navConnectivity.setAttribute("class", "");
+    this.navMemoApp.setAttribute("class", "");
+    this.navLocalAuthorities.setAttribute("class", "");
+    this.navContact.setAttribute("class", "");
+  }
+
+  handleNavigation() {
+
+    this.resetNavbar();
+    this.handleScroll();
+
+  }
+
   handleWindowSizeChange = () => {
    this.setState({ width: window.innerWidth });
   }
 
-  // handleScroll() {
-  //   var scrollPos = window.scrollY();
-  //   $('#navbar a').each(function () {
-  //     var currLink = $(this);
-  //     var refElement = $(currLink.attr("href"));
-  //     if (refElement.position().top <= scrollPos && refElement.position().top + refElement.height() > scrollPos) {
-  //         // $('#menu-center ul li a').removeClass("active");
-  //         // currLink.addClass("active");
-  //       }
-  //       else{
-  //         // currLink.removeClass("active");
-  //       }
-  //   });
-  // }
+  handleScroll() {
+
+    this.resetNavbar();
+
+    var scrollPos = window.screenY + (this.header.getBoundingClientRect().bottom - this.header.getBoundingClientRect().top);
+
+    //change address bar link as well
+
+    if (this.Home.getBoundingClientRect().top <= scrollPos && this.Home.getBoundingClientRect().bottom > scrollPos) {
+
+      this.navHome.setAttribute("class", "active");
+
+    } else if(this.MeetMemo.getBoundingClientRect().top <= scrollPos && this.MeetMemo.getBoundingClientRect().bottom > scrollPos){
+
+      this.navMeetMemo.setAttribute("class", "active");
+
+    } else if(this.Features.getBoundingClientRect().top <= scrollPos && this.Features.getBoundingClientRect().bottom > scrollPos){
+
+      this.navFeatures.setAttribute("class", "active");
+
+    } else if(this.Connectivity.getBoundingClientRect().top <= scrollPos && this.Connectivity.getBoundingClientRect().bottom > scrollPos){
+
+      this.navConnectivity.setAttribute("class", "active");
+
+    } else if(this.MemoApp.getBoundingClientRect().top <= scrollPos && this.MemoApp.getBoundingClientRect().bottom > scrollPos){
+
+      this.navMemoApp.setAttribute("class", "active");
+
+    } else if(this.LocalAuthorities.getBoundingClientRect().top <= scrollPos && this.LocalAuthorities.getBoundingClientRect().bottom > scrollPos){
+
+      this.navLocalAuthorities.setAttribute("class", "active");
+
+    } else if(this.Contact.getBoundingClientRect().top <= scrollPos && this.Contact.getBoundingClientRect().bottom > scrollPos){
+
+      this.navContact.setAttribute("class", "active");
+
+    }
+
+  }
 
   componentDidMount() {
     window.addEventListener('resize', this.handleWindowSizeChange);
-    // window.addEventListener('scroll', this.handleScroll);
+    window.addEventListener('scroll', this.handleScroll);
   }
-
-  // handleKeyPress(keycode){
-  //
-  //   if(keycode === 40 || keycode === 34){
-  //     this.handleScroll('down');
-  //   }
-  //   else if(keycode === 38 || keycode === 33){
-  //     this.handleScroll('up');
-  //   }
-  // }
-  //
-  // //instead of scrolling load page with relevant #link
-  //
-  // handleScroll(direction){
-  //
-  //   if(direction === 'down'){
-  //     window.scroll(0, this.state.scrollLocation + window.innerHeight);
-  //   } else if(direction === 'up'){
-  //     window.scroll(0, this.state.scrollLocation - window.innerHeight);
-  //   }
-  //
-  //   this.setState ({scrollTriggered: true});
-  //
-  // }
-  //
-  //   if(window.innerWidth <= 1024 || window.innerHeight <= 1024){
-  //     window.removeEventListener("keydown", (e) => {
-  //       // space, page up, page down and arrow keys:
-  //       if([32, 33, 34, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
-  //         e.preventDefault();
-  //         this.handleKeyPress(e.keyCode);
-  //       }
-  //     }, false);
-  //
-  //     window.removeEventListener("scroll", (event) => {
-  //       if (window.scrollY > this.state.scrollLocation){
-  //         this.handleScroll('down');
-  //         this.setState({ scrollLocation : window.scrollY});
-  //       }else if(window.scrollY < this.state.scrollLocation){
-  //         this.handleScroll('up');
-  //         this.setState({ scrollLocation : window.scrollY});
-  //       }
-  //       console.log(this.state.scrollLocation);
-  //     }, false);
-  //   }
-  //
-  //   if(window.innerWidth > 1024 && window.innerHeight > 768 || window.innerWidth > 768 && window.innerHeight > 1024){
-  //     window.addEventListener("keydown", (e) => {
-  //       // space, page up, pafodlge down and arrow keys:
-  //       if([32, 33, 34, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
-  //         e.preventDefault();
-  //         this.handleKeyPress(e.keyCode);
-  //       }
-  //     }, false);
-  //
-  //     window.addEventListener("scroll", (event) => {
-  //       if (window.scrollY > this.state.scrollLocation){
-  //         this.handleScroll('down');
-  //         this.setState({ scrollLocation : window.scrollY});
-  //       }else if(window.scrollY < this.state.scrollLocation){
-  //         this.handleScroll('up');
-  //         this.setState({ scrollLocation : window.scrollY});
-  //       }
-  //       console.log(this.state.scrollLocation);
-  //     }, false);
-  //   }
-  // };
-  //
-  //   if(window.innerWidth > 1024 && window.innerHeight > 768){
-  //     window.addEventListener("keydown", (e) => {
-  //       // space, page up, page down and arrow keys:
-  //       if([32, 33, 34, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
-  //         e.preventDefault();
-  //         this.handleKeyPress(e.keyCode);
-  //       }
-  //     }, false);
-  //
-  //     window.addEventListener("scroll", (event) => {
-  //       if (window.scrollY > this.state.scrollLocation){
-  //         this.handleScroll('down');
-  //         this.setState({ scrollLocation : window.scrollY});
-  //       }else if(window.scrollY < this.state.scrollLocation){
-  //         this.handleScroll('up');
-  //         this.setState({ scrollLocation : window.scrollY});
-  //       }
-  //       console.log(this.state.scrollLocation);
-  //     }, false);
-  //   }
-  // }
-
-//   // site key
-//   const sitekey = 'xxxxxxx';
-//
-// // specifying your onload callback function
-//   const callback = () => {
-//     console.log('Done!!!!');
-//   };
-//
-//   const verifyCallback = (response) => {
-//     console.log(response);
-//   };
-//
-// const expiredCallback = () => {
-//   console.log(`Recaptcha expired`);
-//   };
-//
-// // define a variable to store the recaptcha instance
-//   let recaptchaInstance;
-//
-// // handle reset
-//   const resetRecaptcha = () => {
-//     recaptchaInstance.reset();
-//   };
 
   render() {
 
-    // const { scrollLocation } = this.state;
     var isMobile = window.innerWidth <= 480;
     var isTablet = false;
-
-    console.log(window.innerWidth);
 
     if (window.innerWidth <= 480) {
       isMobile = true;
@@ -231,13 +155,13 @@ class App extends Component {
             <input type="checkbox" id="show-menu" role="button" />
 
             <div id="navbar" >
-              <a href="#home">HOME</a>
-              <a href="#meet-memo">MEET MEMO</a>
-              <a href="#features">FEATURES</a>
-              <a href="#connectivity">CONNECTIVITY</a>
-              <a href="#memo-app">MEMO APP</a>
-              <a href="#local-authorities">LOCAL AUTHORITIES</a>
-              <a href="#contact">CONTACT US</a>
+              <a href="#home" onClick={this.handleNavigation}>HOME</a>
+              <a href="#meet-memo" onClick={this.handleNavigation}>MEET MEMO</a>
+              <a href="#features" onClick={this.handleNavigation}>FEATURES</a>
+              <a href="#connectivity" onClick={this.handleNavigation}>CONNECTIVITY</a>
+              <a href="#memo-app" onClick={this.handleNavigation}>MEMO APP</a>
+              <a href="#local-authorities" onClick={this.handleNavigation}>LOCAL AUTHORITIES</a>
+              <a href="#contact" onClick={this.handleNavigation}>CONTACT US</a>
             </div>
           </header>
           <div id="main">
@@ -739,8 +663,8 @@ class App extends Component {
           <script src="build/react.js"></script>
           <script src="https://www.google.com/recaptcha/api.js" async defer></script>
           <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" />
-          <header>
-            <a href="#home">
+          <header ref={(input) => { this.header = input; }}>
+            <a href="#home" onClick={this.handleNavigation}>
               <img className="header-logo" src={logo} alt={logo} />
             </a>
 
@@ -752,26 +676,26 @@ class App extends Component {
             </label>
             <input type="checkbox" id="show-menu" role="button" />
 
-            <div id="navbar" >
-              <a href="#home" className="active">HOME</a>
-              <a href="#meet-memo">MEET MEMO</a>
-              <a href="#features">FEATURES</a>
-              <a href="#connectivity">CONNECTIVITY</a>
-              <a href="#memo-app">MEMO APP</a>
-              <a href="#local-authorities">LOCAL AUTHORITIES</a>
-              <a href="#contact">CONTACT US</a>
+            <div id="navbar" ref={(input) => { this.navbar = input; }} >
+              <a ref={(input) => { this.navHome = input; }} href="#home" class="active" onClick={this.handleNavigation}>HOME</a>
+              <a ref={(input) => { this.navMeetMemo = input; }} href="#meet-memo" class="" onClick={this.handleNavigation}>MEET MEMO</a>
+              <a ref={(input) => { this.navFeatures = input; }} href="#features" class="" onClick={this.handleNavigation}>FEATURES</a>
+              <a ref={(input) => { this.navConnectivity = input; }} href="#connectivity" class="" onClick={this.handleNavigation}>CONNECTIVITY</a>
+              <a ref={(input) => { this.navMemoApp = input; }} href="#memo-app" class="" onClick={this.handleNavigation}>MEMO APP</a>
+              <a ref={(input) => { this.navLocalAuthorities = input; }} href="#local-authorities" class="" onClick={this.handleNavigation}>LOCAL AUTHORITIES</a>
+              <a ref={(input) => { this.navContact = input; }} href="#contact" class="" onClick={this.handleNavigation}>CONTACT US</a>
             </div>
           </header>
           <div id="main">
             <div id="container">
-              <div id="home" className="home">
+              <div ref={(input) => { this.Home = input; }} id="home" className="home">
                 <div className="intro">
                   <h1>Yeah. We think it looks good too.</h1>
                   <h3>Reassurance | Independence | Insight</h3>
                 </div>
               </div>
 
-              <div id="meet-memo">
+              <div ref={(input) => { this.MeetMemo = input; }} id="meet-memo">
                 <div className="pageBorder">
                   <img src={pageBorder} alt={pageBorder} className="border-img"/>
                   <h2>Meet Memo</h2>
@@ -789,7 +713,7 @@ class App extends Component {
                 </p>
               </div>
 
-              <div id="features">
+              <div ref={(input) => { this.Features = input; }} id="features">
                 <div className="features-container">
                   <div className="pageBorder">
                     <img src={pageBorder} alt={pageBorder} className="border-img"/>
@@ -815,7 +739,7 @@ class App extends Component {
                 </div>
               </div>
 
-              <div id="connectivity">
+              <div ref={(input) => { this.Connectivity = input; }} id="connectivity">
                 <div className="pageBorder">
                   <img src={pageBorder} alt={pageBorder} className="border-img"/>
                   <h2>What can Memo connect to?</h2>
@@ -835,7 +759,7 @@ class App extends Component {
                 </div>
               </div>
 
-              <div id="memo-app">
+              <div ref={(input) => { this.MemoApp = input; }} id="memo-app">
                 <div className="pageBorder">
                   <img src={pageBorder} alt={pageBorder} className="border-img"/>
                   <h2>What is the Memo app?</h2>
@@ -876,7 +800,7 @@ class App extends Component {
                 </ul>
               </div>
 
-              <div id="local-authorities">
+              <div ref={(input) => { this.LocalAuthorities = input; }} id="local-authorities">
                 <div className="pageBorder">
                   <img src={pageBorder} alt={pageBorder} className="border-img"/>
                   <h2>Integration with Local Authorities</h2>
@@ -909,7 +833,7 @@ class App extends Component {
                 </div>
               </div>
 
-              <div id="contact">
+              <div ref={(input) => { this.Contact = input; }} id="contact">
                 <div className="pageBorder">
                   <img src={pageBorder} alt={pageBorder} className="border-img"/>
                   <h2>Contact</h2>
