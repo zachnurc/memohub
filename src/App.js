@@ -20,7 +20,6 @@ import smartPlug from './media/smart-plug.png';
 import TSA from './media/tsa.jpg';
 import './App.css';
 
-//on scroll change address bar window.location.hash?
 //email form send email
 
 class App extends Component {
@@ -29,8 +28,6 @@ class App extends Component {
     super(props);
     this.state = {
       width: window.innerWidth,
-      scrollLocation: 0,
-      scrollTriggered: false,
       email: "",
       name: "",
       subject: "",
@@ -114,13 +111,12 @@ class App extends Component {
   }
 
   resetNavbar(){
-    this.navHome.setAttribute("class", "");
-    this.navMeetMemo.setAttribute("class", "");
-    this.navFeatures.setAttribute("class", "");
-    this.navConnectivity.setAttribute("class", "");
-    this.navMemoApp.setAttribute("class", "");
-    this.navLocalAuthorities.setAttribute("class", "");
-    this.navContact.setAttribute("class", "");
+    $('#navbar a').each(function () {
+
+      var currLink = $(this);
+      currLink.removeClass("active");
+
+    });
   }
 
   handleWindowSizeChange = () => {
@@ -129,6 +125,8 @@ class App extends Component {
 
   handleScroll() {
 
+    console.log("scroll");
+
     var scrollPos = $(document).scrollTop();
     $('#navbar a').each(function () {
       var currLink = $(this);
@@ -136,6 +134,7 @@ class App extends Component {
       if (refElement.position().top <= scrollPos && refElement.position().top + refElement.height() > scrollPos) {
         $('#navbar a').removeClass("active");
         currLink.addClass("active");
+        window.location.hash = 'section' + this.hash;
       }
       else{
         currLink.removeClass("active");
@@ -145,9 +144,26 @@ class App extends Component {
 
   componentDidMount() {
     window.addEventListener('resize', this.handleWindowSizeChange);
-    window.addEventListener('scroll', this.handleScroll);
 
-    //smoothscroll
+    var h = window.location.hash.replace('section', '');
+    h = h.substr(1);
+    if (h) {
+      $(document).off("scroll");
+      var target = h,
+      location = target;
+      target = $(target);
+      if(!(target.offset() == undefined )){
+        $('html, body').stop().animate({
+          'scrollTop': target.offset().top+2
+        }, 1000, 'swing', function () {
+          window.location.hash = 'section' + location;
+          $(document).on("scroll", this.handleScroll);
+        });
+      }
+    }
+
+        window.addEventListener('scroll', this.handleScroll);
+
     $('a[href^="#"]').on('click', function (e) {
         e.preventDefault();
         $(document).off("scroll");
@@ -163,7 +179,7 @@ class App extends Component {
         $('html, body').stop().animate({
             'scrollTop': target.offset().top+2
         }, 500, 'swing', function () {
-            window.location.hash = location;
+            window.location.hash = 'section' + location;
             $(document).on("scroll", this.handleScroll);
         });
     });
