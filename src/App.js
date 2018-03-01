@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Recaptcha from '../src';
 import $ from 'jquery';
+import axios from 'axios';
 import FontAwesome from 'react-fontawesome';
 import logo from './media/logo.png';
 import packageContents from './media/packaging-contents.jpg';
@@ -50,6 +51,7 @@ class App extends Component {
     this.setState({[name]: value})
   }
 
+
   handleSubmit(event) {
     console.log(this.state.name, this.state.email, this.state.subject, this.state.message);
     event.preventDefault();
@@ -69,30 +71,22 @@ class App extends Component {
       this.contactMessage.setAttribute("class", "input-box input-box-error");
       this.setState({submission: "Please type a message."});
     } else {
-      $.ajax({
 
-        type: 'POST',
-        url: './static/php/mailer.php',
-        data: {
-          "form_name": this.state.name,
-          "form_email": this.state.email,
-          "form_message": this.state.message,
-          "form_subject": this.state.subject
-        },
-        cache: false,
-        success: function(data) {
-
-          // Success..
-          this.setState({submission: "Your email has been sent."});
-
-        }.bind(this),
-
-        error: function(xhr, status, err) {
-
-          this.setState({submission: "Sorry, there has been an error.  Please try again later or email info@alcuris.co.uk"});
-
-        }.bind(this)
-
+      axios.post(
+        "/mailer.php",
+        {
+        "form_name": this.state.name,
+        "form_email": this.state.email,
+        "form_message": this.state.message,
+        "form_subject": this.state.subject
+      }).then(response => {
+        this.setState({submission: "Your email has been sent."})
+        setTimeout(() => {
+          this.setState({submission: ""})
+        },3000)
+      }).catch(error => {
+        console.error(error);
+        this.setState({submission: "Sorry, there has been an error.  Please try again later or email info@alcuris.co.uk"})
       });
     }
   }
@@ -124,8 +118,6 @@ class App extends Component {
   }
 
   handleScroll() {
-
-    console.log("scroll");
 
     var scrollPos = $(document).scrollTop();
     $('#navbar a').each(function () {
