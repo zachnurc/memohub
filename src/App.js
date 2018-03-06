@@ -436,17 +436,6 @@ class App extends Component {
                       />
                       <p>{this.state.submission}</p>
                     </div>
-                    {/* <div id="recaptcha" className="col-small no-left-padding">
-                      <Recaptcha
-                        ref={e => recaptchaInstance = e}
-                        sitekey={sitekey}
-                        size="compact"
-                        render="explicit"
-                        verifyCallback={verifyCallback}
-                        onloadCallback={callback}
-                        expiredCallback={expiredCallback}
-                      />
-                    </div> */}
                   </form>
                 </div>
               </div>
@@ -686,17 +675,7 @@ class App extends Component {
                       />
                     </div>
                     <div className="col-wide margin-top">
-                      <div id="recaptcha" className="col-small no-left-padding">
-                        {/* <Recaptcha
-                          ref={e => recaptchaInstance = e}
-                          sitekey={sitekey}
-                          size="compact"
-                          render="explicit"
-                          verifyCallback={verifyCallback}
-                          onloadCallback={callback}
-                          expiredCallback={expiredCallback}
-                        /> */}
-                      </div>
+                      <div id="recaptcha" className="col-small no-left-padding" />
                       <div className="col-small" >
                         <p>{this.state.submission}</p>
                       </div>
@@ -960,17 +939,7 @@ class App extends Component {
                       />
                     </div>
                     <div className="col-wide margin-top">
-                      <div id="recaptcha" className="col-small no-left-padding">
-                        {/* <Recaptcha
-                          ref={e => recaptchaInstance = e}
-                          sitekey={sitekey}
-                          size="compact"
-                          render="explicit"
-                          verifyCallback={verifyCallback}
-                          onloadCallback={callback}
-                          expiredCallback={expiredCallback}
-                        /> */}
-                      </div>
+                      <div id="recaptcha" className="col-small no-left-padding" />
                       <div className="col-small">
                         <p>{this.state.submission}</p>
                       </div>
